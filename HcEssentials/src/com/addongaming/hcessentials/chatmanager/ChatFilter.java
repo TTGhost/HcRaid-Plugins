@@ -195,8 +195,7 @@ public class ChatFilter implements Listener, CommandExecutor {
 			return;
 		}
 		User p = HcEssentials.essentials.getUser(event.getPlayer());
-		Set<Player> offPlayers = new HashSet<Player>(Arrays.asList(Bukkit
-				.getOnlinePlayers()));
+		Set<Player> offPlayers = new HashSet<Player>();
 		for (Iterator<Player> it = offPlayers.iterator(); it.hasNext();) {
 			Player play = it.next();
 			if (play.hasPermission("HcRaid.mod"))

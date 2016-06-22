@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 
-import net.ess3.api.InvalidWorldException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,6 +18,8 @@ import com.addongaming.hcessentials.minigames.games.OneVOne;
 import com.addongaming.hcessentials.minigames.games.OneVOne.Tier;
 import com.addongaming.hcessentials.redeem.SyncInventory;
 import com.earth2me.essentials.commands.WarpNotFoundException;
+
+import net.ess3.api.InvalidWorldException;
 
 public class OneVOneGame {
 	private final String player1;

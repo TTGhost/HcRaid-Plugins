@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import lib.PatPeter.SQLibrary.SQLite;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -34,13 +32,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
-import org.kitteh.tag.PlayerReceiveNameTagEvent;
 import org.kitteh.tag.TagAPI;
 
 import com.addongaming.hcessentials.HcEssentials;
 import com.addongaming.hcessentials.SubPlugin;
 import com.addongaming.hcessentials.events.BountyClaimedEvent;
 import com.addongaming.hcessentials.utils.Utils;
+
+import lib.PatPeter.SQLibrary.SQLite;
 
 public class Bounty implements SubPlugin, Listener, CommandExecutor {
 	private List<BountyHeadObj> bountyHeadList = new ArrayList<BountyHeadObj>();

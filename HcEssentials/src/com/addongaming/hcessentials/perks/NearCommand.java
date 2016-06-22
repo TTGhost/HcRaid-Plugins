@@ -89,8 +89,7 @@ public class NearCommand implements SubPlugin, CommandExecutor {
 	}
 
 	private void doNear(final Player p, long radius, int cost) {
-		ArrayList<Player> allPlayers = new ArrayList<Player>(
-				Arrays.asList(Bukkit.getOnlinePlayers()));
+		ArrayList<Player> allPlayers = new ArrayList<Player>(Bukkit.getOnlinePlayers());
 		for (Iterator<Player> iter = allPlayers.iterator(); iter.hasNext();) {
 			Player pl = iter.next();
 			if (p == pl

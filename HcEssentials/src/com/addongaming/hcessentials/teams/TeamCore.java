@@ -4,8 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
-import lib.PatPeter.SQLibrary.SQLite;
-
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,6 +12,8 @@ import com.addongaming.hcessentials.SubPlugin;
 import com.addongaming.hcessentials.config.Config;
 import com.addongaming.hcessentials.teams.listeners.PlayerInteractions;
 import com.addongaming.hcessentials.teams.listeners.TeamChatHandler;
+
+import lib.PatPeter.SQLibrary.SQLite;
 
 public class TeamCore implements SubPlugin {
 	public static final boolean debug = false;

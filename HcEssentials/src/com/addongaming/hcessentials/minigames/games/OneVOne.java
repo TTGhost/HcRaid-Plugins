@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import net.ess3.api.InvalidWorldException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -49,6 +47,8 @@ import com.addongaming.hcessentials.minigames.games.onevone.OneVOneGame;
 import com.addongaming.hcessentials.utils.Utils;
 import com.earth2me.essentials.commands.WarpNotFoundException;
 import com.sk89q.worldguard.protection.managers.RegionManager;
+
+import net.ess3.api.InvalidWorldException;
 
 public class OneVOne implements Minigame, Listener {
 	List<OneVOneGame> runningGames = new ArrayList<OneVOneGame>();

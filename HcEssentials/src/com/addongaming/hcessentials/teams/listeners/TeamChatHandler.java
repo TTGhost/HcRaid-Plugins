@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lib.PatPeter.SQLibrary.SQLite;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -27,6 +25,8 @@ import com.addongaming.hcessentials.teams.Ranks;
 import com.addongaming.hcessentials.teams.Team;
 import com.addongaming.hcessentials.teams.TeamCore;
 import com.addongaming.hcessentials.teams.TeamMethods;
+
+import lib.PatPeter.SQLibrary.SQLite;
 
 public class TeamChatHandler extends TeamMethods implements CommandExecutor {
 	public static boolean canTeam = false;

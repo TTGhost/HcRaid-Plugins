@@ -82,8 +82,7 @@ public class ChatDeaths implements Listener, CommandExecutor {
 	public void playerDeath(PlayerDeathEvent event) {
 		if (event.getDeathMessage() == null)
 			return;
-		Set<Player> offPlayers = new HashSet<Player>(Arrays.asList(Bukkit
-				.getOnlinePlayers()));
+		Set<Player> offPlayers = new HashSet<Player>();
 		for (Iterator<Player> it = offPlayers.iterator(); it.hasNext();) {
 			Player next = it.next();
 			if (currentlyToggled.contains(next.getName())) {

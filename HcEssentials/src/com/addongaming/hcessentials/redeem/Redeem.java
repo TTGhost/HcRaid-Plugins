@@ -16,9 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.permission.Permission;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -48,6 +45,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.addongaming.hcessentials.HcEssentials;
 import com.addongaming.hcessentials.SubPlugin;
 import com.addongaming.hcessentials.logging.DataLog;
+
+import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.permission.Permission;
 
 public class Redeem implements Listener, CommandExecutor, SubPlugin {
 	public static Economy economy = null;

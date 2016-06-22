@@ -2,11 +2,11 @@ package com.addongaming.hcessentials.autoannouncer;
 
 import java.util.List;
 
-import me.spoony.chatlib.MessageSender;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+
+import me.spoony.chatlib.MessageSender;
 
 public class AnnouncingJTask implements Runnable {
 	private List<String> statements;

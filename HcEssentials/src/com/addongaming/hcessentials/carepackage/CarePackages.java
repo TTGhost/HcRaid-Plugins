@@ -13,8 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import net.ess3.api.InvalidWorldException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -48,8 +46,9 @@ import com.addongaming.hcessentials.SubPlugin;
 import com.addongaming.hcessentials.data.SpecialItems;
 import com.addongaming.hcessentials.data.SpecialItems.SpecialTypes;
 import com.addongaming.hcessentials.redeem.SyncInventory;
-import com.addongaming.hcessentials.utils.Utils;
 import com.earth2me.essentials.commands.WarpNotFoundException;
+
+import net.ess3.api.InvalidWorldException;
 
 public class CarePackages implements CommandExecutor, Listener, SubPlugin {
 	private JavaPlugin jp;

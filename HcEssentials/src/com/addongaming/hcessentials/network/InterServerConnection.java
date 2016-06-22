@@ -13,8 +13,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import net.ess3.api.InvalidWorldException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -40,6 +38,8 @@ import com.addongaming.hcessentials.database.DatabaseHandler;
 import com.addongaming.hcessentials.database.DatabaseManagement;
 import com.addongaming.hcessentials.logging.DataLog;
 import com.earth2me.essentials.commands.WarpNotFoundException;
+
+import net.ess3.api.InvalidWorldException;
 
 public class InterServerConnection implements SubPlugin, Listener {
 	private JavaPlugin jp;

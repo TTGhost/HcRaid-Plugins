@@ -1,12 +1,12 @@
 package com.addongaming.hcessentials.hooks.logging;
 
-import net.coreprotect.CoreProtect;
-import net.coreprotect.CoreProtectAPI;
-
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.addongaming.hcessentials.SubPlugin;
+
+import net.coreprotect.CoreProtect;
+import net.coreprotect.CoreProtectAPI;
 
 public class BlockLoggingHook implements SubPlugin {
 	private JavaPlugin jp;

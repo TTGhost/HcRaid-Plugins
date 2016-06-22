@@ -7,7 +7,7 @@ public class ServerStatsRunnable implements Runnable {
 	@SuppressWarnings("unused")
 	@Override
 	public void run() {
-		int players = Bukkit.getOnlinePlayers().length;
+		int players = Bukkit.getOnlinePlayers().size();
 		long freeMemory = Runtime.getRuntime().freeMemory() / (1024 * 1024);
 		long totalMemory = Runtime.getRuntime().totalMemory() / (1024 * 1024);
 		long usedMemory = totalMemory - freeMemory;

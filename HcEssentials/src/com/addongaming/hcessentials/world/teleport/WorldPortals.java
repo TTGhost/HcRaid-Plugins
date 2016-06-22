@@ -2,8 +2,6 @@ package com.addongaming.hcessentials.world.teleport;
 
 import java.util.Iterator;
 
-import net.ess3.api.InvalidWorldException;
-
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -16,6 +14,8 @@ import com.addongaming.hcessentials.SubPlugin;
 import com.earth2me.essentials.commands.WarpNotFoundException;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+
+import net.ess3.api.InvalidWorldException;
 
 public class WorldPortals implements Listener, SubPlugin {
 	private final JavaPlugin jp;

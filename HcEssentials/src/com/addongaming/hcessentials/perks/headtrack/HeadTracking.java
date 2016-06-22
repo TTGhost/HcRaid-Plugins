@@ -5,12 +5,11 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.ess3.api.InvalidWorldException;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -35,6 +34,9 @@ import com.addongaming.hcessentials.config.Config;
 import com.addongaming.hcessentials.logging.DataLog;
 import com.addongaming.hcessentials.utils.Utils;
 import com.earth2me.essentials.commands.WarpNotFoundException;
+import com.sk89q.worldedit.Vector;
+
+import net.ess3.api.InvalidWorldException;
 
 public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 	private JavaPlugin jp;
@@ -447,11 +449,23 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 					true);
 		}
 	}
+	public static Block getTarBlock(Player player, int range) {
+	    Location loc = player.getEyeLocation();
+	    org.bukkit.util.Vector dir = loc.getDirection().normalize();
+	 
+	    Block b = null;
+	 
+	    for (int i = 0; i <= range; i++) {
+	        b = loc.add(dir).getBlock();
+	    }
+	 
+	    return b;
+	}
 
 	@SuppressWarnings("deprecation")
 	private static void setTrackingChest(Player p) {
-		if (p.getTargetBlock(null, 20).getType().equals(Material.CHEST)) {
-			p.getTargetBlock(null, 20).setData((byte) Config.Chests.TRACKING);
+		if (getTarBlock(p, 20).getType().equals(Material.CHEST)) {
+			getTarBlock(p, 20).setData((byte) Config.Chests.TRACKING);
 			p.sendMessage(ChatColor.RED + "Made a tracking chest.");
 		} else {
 			p.sendMessage(ChatColor.RED + "Target block is not chest.");

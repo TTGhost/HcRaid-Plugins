@@ -2,7 +2,6 @@ package com.addongaming.hcessentials.enchants.objects;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;

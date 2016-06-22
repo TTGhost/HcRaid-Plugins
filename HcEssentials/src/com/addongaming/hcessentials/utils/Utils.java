@@ -221,6 +221,28 @@ public class Utils {
 		}
 	}
 
+	public static int getPlayerVersion(Player player) {
+		try {
+			Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit."
+					+ getServerVersion() + "entity.CraftPlayer");
+			Object converted = craftPlayer.cast(player);
+			Method handle = converted.getClass().getMethod("getHandle");
+			Object entityPlayer = handle.invoke(converted);
+			Field playerConField = entityPlayer.getClass().getField(
+					"playerConnection");
+			Object playerCon = playerConField.get(entityPlayer);
+			Field networkField = playerCon.getClass()
+					.getField("networkManager");
+			Object networkMan = networkField.get(playerCon);
+			return (int) networkMan.getClass()
+					.getMethod("getVersion", new Class<?>[] {})
+					.invoke(networkMan);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+
 	public static String getServerVersion() {
 		Pattern brand = Pattern.compile("(v|)[0-9][_.][0-9][_.][R0-9]*");
 		String version = null;
@@ -235,14 +257,16 @@ public class Utils {
 
 	public static String itemToDebug(ItemStack is) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(is.getType().name().toLowerCase() + " #" + is.getAmount()+" ");
-		if(is.hasItemMeta()){
-			ItemMeta im  = is.getItemMeta();
-			if(im.hasDisplayName())
+		sb.append(is.getType().name().toLowerCase() + " #" + is.getAmount()
+				+ " ");
+		if (is.hasItemMeta()) {
+			ItemMeta im = is.getItemMeta();
+			if (im.hasDisplayName())
 				sb.append(im.getDisplayName() + " ");
-			if(im.hasEnchants())
-				for(Enchantment e:im.getEnchants().keySet())
-					sb.append(e.getName() + " lvl " + im.getEnchantLevel(e)+" | ");
+			if (im.hasEnchants())
+				for (Enchantment e : im.getEnchants().keySet())
+					sb.append(e.getName() + " lvl " + im.getEnchantLevel(e)
+							+ " | ");
 		}
 		return sb.toString();
 	}
