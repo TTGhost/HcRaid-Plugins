@@ -101,8 +101,8 @@ public class Vanish extends Tools implements Listener, CommandExecutor, ModTool 
 			User u = Main.essentials.getUser(p);
 			if (perm) {
 				u.setGodModeEnabled(true);
-				u.setAllowFlight(true);
-				u.setFlying(true);
+				p.setAllowFlight(true);
+				p.setFlying(true);
 				u.setHidden(true);
 				p.addPotionEffect(new PotionEffect(
 						PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1));
@@ -120,8 +120,8 @@ public class Vanish extends Tools implements Listener, CommandExecutor, ModTool 
 				p.removePotionEffect(PotionEffectType.NIGHT_VISION);
 				p.removePotionEffect(PotionEffectType.INVISIBILITY);
 				u.setGodModeEnabled(false);
-				u.setAllowFlight(false);
-				u.setFlying(false);
+				p.setAllowFlight(false);
+				p.setFlying(false);
 				u.setHidden(false);
 				vanishList.remove(p.getName());
 			}
@@ -188,8 +188,8 @@ public class Vanish extends Tools implements Listener, CommandExecutor, ModTool 
 						PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
 				User u = Main.essentials.getUser(p);
 				u.setGodModeEnabled(true);
-				u.setAllowFlight(true);
-				u.setFlying(true);
+				p.setAllowFlight(true);
+				p.setFlying(true);
 				u.setHidden(true);
 				msg(p, "You are now vanished!");
 				vanishList.add(p.getName());
@@ -205,9 +205,9 @@ public class Vanish extends Tools implements Listener, CommandExecutor, ModTool 
 				p.removePotionEffect(PotionEffectType.INVISIBILITY);
 				User u = Main.essentials.getUser(p);
 				u.setGodModeEnabled(false);
-				if (u.getGameMode() != GameMode.CREATIVE) {
-					u.setFlying(false);
-					u.setAllowFlight(false);
+				if (p.getGameMode() != GameMode.CREATIVE) {
+					p.setFlying(false);
+					p.setAllowFlight(false);
 				}
 				u.setHidden(false);
 				offModList.add(p.getName());

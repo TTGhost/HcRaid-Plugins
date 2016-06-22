@@ -1,8 +1,20 @@
 package hcmodtools.core;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import com.earth2me.essentials.Essentials;
+
 import hcmodtools.core.alt.AltChecking;
 import hcmodtools.core.chatcontrol.ChatControl;
-import hcmodtools.core.chatcontrol.ChatMonitor;
 import hcmodtools.core.hackergrunt.HackerGrunt;
 import hcmodtools.core.monitor.AccountMonitor;
 import hcmodtools.core.playerspy.CommandSpy;
@@ -16,21 +28,7 @@ import hcmodtools.core.staffchat.StaffChat;
 import hcmodtools.core.vanish.Vanish;
 import hcmodtools.core.xray.AntiXray;
 import hcmodtools.core.xray.OreNotification;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
 import net.milkbowl.vault.permission.Permission;
-
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import com.earth2me.essentials.Essentials;
 
 public class Main extends JavaPlugin {
 	ArrayList<ModTool> modTools = new ArrayList<ModTool>();
