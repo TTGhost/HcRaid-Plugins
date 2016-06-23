@@ -3,15 +3,13 @@ package com.addongaming.minigames.minigames;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.server.v1_7_R3.EntityItem;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_7_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -30,6 +28,8 @@ import com.addongaming.minigames.management.kits.EKit;
 import com.addongaming.minigames.management.kits.Kit;
 import com.addongaming.minigames.management.scheduling.GameLimit;
 import com.addongaming.minigames.management.scheduling.InventoryOpener;
+
+import net.minecraft.server.v1_10_R1.EntityItem;
 
 public class KillConfirmed extends ArenaGame {
 
@@ -307,7 +307,7 @@ public class KillConfirmed extends ArenaGame {
 		final EntityItem e = new EntityItem(
 				((CraftWorld) location.getWorld()).getHandle(),
 				location.getX(), location.getY(), location.getZ()) {
-			@Override
+			
 			public boolean a(EntityItem entityitem) {
 				// DO NOT merge items, we want to keep this exact instance.
 				return false;
