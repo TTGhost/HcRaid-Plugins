@@ -7,7 +7,7 @@ import java.util.Iterator;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.milkbowl.vault.economy.Economy;
-import net.minecraft.util.org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

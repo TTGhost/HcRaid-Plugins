@@ -5,9 +5,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.milkbowl.vault.economy.Economy;
-import net.minecraft.server.v1_7_R1.Item;
-
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,6 +31,8 @@ import core.essentials.perks.TntHandler;
 import core.essentials.perks.farm.FarmMonitor;
 import core.essentials.perks.farm.TreeAssistance;
 import core.hcrg.MinigameHandler;
+import net.milkbowl.vault.economy.Economy;
+import net.minecraft.server.v1_10_R1.Item;
 
 public class Main extends JavaPlugin implements CommandExecutor {
 	List<Disableable> toDisable = new ArrayList<Disableable>();
@@ -95,8 +94,8 @@ public class Main extends JavaPlugin implements CommandExecutor {
 			for (EFood ef : EFood.values()) {
 				field.setInt(ef.getItemClass(), ef.getStackSize());
 			}
-			field.setInt(Item.d(Material.SIGN.getId()), 1);
-			field.setInt(Item.d(Material.BUCKET.getId()), 1);
+			field.setInt(Material.SIGN.getId(), 1);
+			field.setInt(Material.BUCKET.getId(), 1);
 			field.setAccessible(false);
 
 		} catch (NoSuchFieldException | SecurityException
