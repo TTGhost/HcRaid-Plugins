@@ -1,16 +1,18 @@
 package com.vultureservers;
 
+import java.util.HashSet;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.entity.Player;
 
 public class PlayerBank extends JavaPlugin implements Listener, CommandExecutor{
 	
@@ -32,8 +34,8 @@ public class PlayerBank extends JavaPlugin implements Listener, CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		if(commandLabel.equalsIgnoreCase("createbank")) {
 			Player p = (Player) sender;
-			 if (p.getTargetBlock(null, 20).getType().equals(Material.CHEST)) {
-				   p.getTargetBlock(null, 20).setData((byte) 9);
+			 if (p.getTargetBlock((HashSet<Byte>) null, 20).getType().equals(Material.CHEST)) {
+				   p.getTargetBlock((HashSet<Byte>) null, 20).setData((byte) 9);
 				   p.sendMessage(ChatColor.RED + "[VultureCraft] " + ChatColor.GOLD + "Bank chest has been created!");
 				  } else {
 				   p.sendMessage(ChatColor.RED + "[VultureCraft] " + ChatColor.GOLD + "Target block is not a chest.");

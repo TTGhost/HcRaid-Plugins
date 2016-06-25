@@ -38,7 +38,13 @@ public class WorldGuardUtils {
 	private void loadArea(World world, File file, Vector origin)
 			throws DataException, IOException, MaxChangedBlocksException {
 		EditSession es = new EditSession(new BukkitWorld(world), 999999999);
-		CuboidClipboard cc = CuboidClipboard.loadSchematic(file);
-		cc.paste(es, origin, false);
+		CuboidClipboard cc;
+		try {
+			cc = CuboidClipboard.loadSchematic(file);
+			cc.paste(es, origin, false);
+		} catch (com.sk89q.worldedit.world.DataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

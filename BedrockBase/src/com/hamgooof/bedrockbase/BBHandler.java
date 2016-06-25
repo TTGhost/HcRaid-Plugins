@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.primesoft.asyncworldedit.PluginMain;
+import org.primesoft.asyncworldedit.AsyncWorldEditMain;
 
 import com.hamgooof.bedrockbase.core.BBListener;
 import com.hamgooof.bedrockbase.core.BBPlugin;
@@ -22,10 +22,10 @@ import com.hamgooof.bedrockbase.objects.BedrockSchematic;
 import com.hamgooof.bedrockbase.worldedit.AWEListener;
 import com.hamgooof.bedrockbase.worldedit.PastingRunnable;
 import com.sk89q.worldedit.BlockVector;
-import com.sk89q.worldguard.protection.databases.ProtectionDatabaseException;
 import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.managers.storage.StorageException;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 
 public class BBHandler implements CommandExecutor {
@@ -42,7 +42,7 @@ public class BBHandler implements CommandExecutor {
 		this.initialheight = initialheight;
 		loadBases(bases);
 		playerHandler = new PlayerHandler(jp.getDataFolder(), this);
-		PluginMain.getInstance().getBlockPlacer()
+		AsyncWorldEditMain.getInstance().getBlockPlacer()
 				.addListener(new AWEListener(playerHandler));
 		jp.getServer().getPluginManager().registerEvents(new BBListener(), jp);
 	}
@@ -314,12 +314,18 @@ public class BBHandler implements CommandExecutor {
 		pr.setFlag(DefaultFlag.CHEST_ACCESS, State.ALLOW);
 		BBPlugin.worldGuard.getGlobalRegionManager()
 				.get(Bukkit.getWorld(BBPlugin.world)).addRegion(pr);
-		try {
-			rm.save();
-			BBPlugin.worldGuard.getGlobalRegionManager()
-					.get(Bukkit.getWorld(BBPlugin.world)).save();
-		} catch (ProtectionDatabaseException e) {
-			e.printStackTrace();
-		}
+			try {
+				rm.save();
+			} catch (StorageException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				BBPlugin.worldGuard.getGlobalRegionManager()
+						.get(Bukkit.getWorld(BBPlugin.world)).save();
+			} catch (StorageException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 }

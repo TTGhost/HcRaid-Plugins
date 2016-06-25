@@ -52,8 +52,9 @@ import org.maxgamer.maxbans.listeners.JoinListener;
 import org.maxgamer.maxbans.sync.SyncServer;
 import org.maxgamer.maxbans.sync.Syncer;
 import org.maxgamer.maxbans.util.Formatter;
-import org.maxgamer.maxbans.util.Metrics;
-import org.maxgamer.maxbans.util.Metrics.Graph;
+import org.spigotmc.Metrics;
+import org.spigotmc.Metrics.Graph;
+
 
 /**
  * The MaxBans plugin.<br/>
@@ -354,7 +355,7 @@ public class MaxBans extends JavaPlugin {
 			if (metrics != null)
 				return; // Don't start two metrics.
 
-			metrics = new Metrics(this);
+			metrics = new Metrics();
 			if (metrics.start() == false)
 				return; // Metrics is opt-out.
 

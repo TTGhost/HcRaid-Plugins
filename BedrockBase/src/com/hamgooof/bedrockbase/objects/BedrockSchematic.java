@@ -21,17 +21,27 @@ public class BedrockSchematic {
 		File bBase = new File(JavaPlugin.getPlugin(WorldEditPlugin.class)
 				.getDataFolder() + File.separator + "schematics", base
 				+ ".schematic");
-		loadData(bBase);
+		try {
+			loadData(bBase);
+		} catch (DataException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	private void loadData(File bBase) {
+	private void loadData(File bBase) throws DataException {
 		try {
-			CuboidClipboard cc = CuboidClipboard.loadSchematic(bBase);
-			width = cc.getWidth();
-			height = cc.getHeight();
-			depth = cc.getLength();
-		} catch (DataException e) {
-			e.printStackTrace();
+			CuboidClipboard cc;
+			try {
+				cc = CuboidClipboard.loadSchematic(bBase);
+				width = cc.getWidth();
+				height = cc.getHeight();
+				depth = cc.getLength();
+			} catch (com.sk89q.worldedit.world.DataException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

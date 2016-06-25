@@ -7,8 +7,9 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.primesoft.asyncworldedit.blockPlacer.BlockPlacerJobEntry;
-import org.primesoft.asyncworldedit.blockPlacer.IBlockPlacerListener;
+import org.primesoft.asyncworldedit.blockPlacer.BlockPlacerEntry;
+import org.primesoft.asyncworldedit.blockPlacer.entries.JobEntry;
+import org.primesoft.asyncworldedit.api.blockPlacer.IBlockPlacerListener;
 
 import com.hamgooof.bedrockbase.core.BBPlugin;
 import com.hamgooof.bedrockbase.core.PlayerHandler;
@@ -30,19 +31,20 @@ public class AWEListener implements IBlockPlacerListener {
 		return false;
 	}
 
-	public synchronized static void addPlayer(UUID player,
-			BedrockSchematic schematic) {
+	public synchronized static void addPlayer(UUID player, BedrockSchematic schematic) {
 		pastingSchematics.add(player.toString() + schematic.getName());
 	}
 
 	@Override
-	public void jobAdded(BlockPlacerJobEntry arg0) {
+	public void jobAdded(JobEntry arg0) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
-	public void jobRemoved(BlockPlacerJobEntry arg0) {
+	public void jobRemoved(JobEntry arg0) {
 		try {
-			Field f = BlockPlacerJobEntry.class.getDeclaredField("m_player");
+			Field f = BlockPlacerEntry.class.getDeclaredField("m_player");
 			f.setAccessible(true);
 			String[] split = ((String) f.get(arg0)).split("[|]");
 			if (split.length == 2) {
@@ -51,8 +53,7 @@ public class AWEListener implements IBlockPlacerListener {
 				Player p = Bukkit.getPlayer(UUID.fromString(split[0]));
 				if (p != null && p.isOnline()) {
 					if (!isPasting(p.getUniqueId())) {
-						p.sendMessage(BBPlugin.title
-								+ "You can now return to your base. /bb");
+						p.sendMessage(BBPlugin.title + "You can now return to your base. /bb");
 					}
 				}
 			}
@@ -60,4 +61,5 @@ public class AWEListener implements IBlockPlacerListener {
 			e.printStackTrace();
 		}
 	}
+
 }

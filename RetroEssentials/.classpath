@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/condonr4.CA/Desktop/MCP/craftbukkit-1.10.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/condonr4.CA/Desktop/MCP/spigot-1.10.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/condonr4.CA/Desktop/MCP/Vault.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/craftbukkit-1.10.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/spigot-1.10.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Vault.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

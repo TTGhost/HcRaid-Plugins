@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/bukkit-1.6.4-R2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/CoreProtect_2.0.8.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/craftbukkit-1.6.4-R2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/TagAPI.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/Vault.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/Votifier.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/WGRegionEvents.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/WorldEdit.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/WorldGuard.jar"/>
-	<classpathentry kind="lib" path="C:/Minecraft Jars 1.6.4/GriefPrevention-282.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/HcEssentials"/>
-	<classpathentry kind="lib" path="C:/Users/Jake/Downloads/CombatTag.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/HcEssentials"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/ChatLib_v1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Citizens.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/CombatTagPlus.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/CoreProtect_2.12.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/craftbukkit-1.10.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Essentials-2.x-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/GiantCaves-1.7.10-R01.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/GriefPrevention.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/HcEssentials.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/HyperConomy.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/lombok.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/NoCheatPlus.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/ProtocolLib.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Sentry.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/spigot-1.10.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/SQLibrary-7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/TagAPI.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Vault.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/votifier-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/WGRegionEvents.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/WorldBorder.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/worldedit-bukkit-6.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/worldguard-6.1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

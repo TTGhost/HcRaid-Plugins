@@ -1,6 +1,7 @@
 package com.addongaming.misc;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
@@ -21,8 +22,8 @@ public class Main extends JavaPlugin {
 		if (!sender.isOp())
 			return true;
 		Player p = (Player) sender;
-		if (p.getTargetBlock(null, 20).getType().equals(Material.CHEST)) {
-			Chest chest = (Chest) p.getTargetBlock(null, 20).getState();
+		if (p.getTargetBlock((HashSet<Byte>) null, 20).getType().equals(Material.CHEST)) {
+			Chest chest = (Chest) p.getTargetBlock((HashSet<Byte>) null, 20).getState();
 			ItemStack[] is = chest.getBlockInventory().getContents();
 			List<ItemStack> myList = new ArrayList<ItemStack>();
 			for (ItemStack item : is)

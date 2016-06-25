@@ -2,6 +2,7 @@ package core.start;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -85,8 +86,8 @@ public class Main extends JavaPlugin implements CommandExecutor {
 	}
 
 	private static void setBankChest(Player p) {
-		if (p.getTargetBlock(null, 20).getType().equals(Material.CHEST)) {
-			p.getTargetBlock(null, 20).setData((byte) 10);
+		if (p.getTargetBlock((HashSet<Byte>) null, 20).getType().equals(Material.CHEST)) {
+			p.getTargetBlock((HashSet<Byte>) null, 20).setData((byte) 10);
 			p.sendMessage(title + ChatColor.RED + "Made a bank chest.");
 		} else {
 			p.sendMessage(title + ChatColor.RED + "Target block is not chest.");
