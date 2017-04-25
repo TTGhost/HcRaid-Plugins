@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/HcEssentials"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/ChatLib_v1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Citizens.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/CoreProtect_2.12.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/craftbukkit-1.10.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Essentials-2.x-SNAPSHOT.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/HcEssentials.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/HyperConomy.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/lombok.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/ProtocolLib.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Sentry.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/spigot-1.10.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/SQLibrary-7.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/TagAPI.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/Vault.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/votifier-1.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/WGRegionEvents.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/WorldBorder.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/worldedit-bukkit-6.1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/worldguard-6.1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Riain/Desktop/MCP/NoCheatPlus.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/ChatLib_v1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/Citizens.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/CoreProtect_2.12.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/craftbukkit-1.11.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/Essentials-2.x-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/HcEssentials.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/HyperConomy.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/lombok.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/ProtocolLib.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/Sentry.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/spigot-1.11.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/SQLibrary-7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/TagAPI.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/Vault.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/votifier-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/WGRegionEvents.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/WorldBorder.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/worldedit-bukkit-6.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/worldguard-6.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Kaleb/Desktop/server/plugins/NoCheatPlus.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
