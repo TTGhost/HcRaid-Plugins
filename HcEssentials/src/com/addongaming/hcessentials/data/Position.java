@@ -24,7 +24,7 @@ public class Position implements ConfigurationSerializable {
 	}
 
 	public Map<String, Object> serialize() {
-		Map tempMap = new HashMap();
+		Map<String, Object> tempMap = new HashMap<String, Object>();
 		tempMap.put("location", Utils.locationToSaveString(this.loc));
 		return tempMap;
 	}

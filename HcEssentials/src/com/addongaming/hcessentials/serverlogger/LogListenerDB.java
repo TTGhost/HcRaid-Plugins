@@ -9,12 +9,10 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.addongaming.hcessentials.logging.DataLog;
 import com.addongaming.hcessentials.utils.AtomicArrayList;
 
 public class LogListenerDB implements Listener {
 	private final JavaPlugin jp;
-	private DataLog dl;
 	private ServerLoggingDB dh;
 	private final AtomicArrayList<PlayerChat> playerChat = new AtomicArrayList<PlayerChat>();
 	private final AtomicArrayList<PlayerCmd> playerCmd = new AtomicArrayList<PlayerCmd>();

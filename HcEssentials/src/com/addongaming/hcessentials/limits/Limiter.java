@@ -15,7 +15,6 @@ import com.addongaming.hcessentials.limits.objects.LimitedBlock;
 import com.addongaming.hcessentials.logging.DataLog;
 
 public class Limiter implements SubPlugin {
-	private CraftingLimiter cl;
 	List<EntityType> disAllowed = new ArrayList<EntityType>();
 	private JavaPlugin jp;
 	List<LimitedBlock> limitedBlocks = new ArrayList<LimitedBlock>();

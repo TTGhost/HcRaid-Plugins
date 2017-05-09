@@ -109,11 +109,11 @@ public class EnchantListener implements Listener, SubPlugin {
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void blockDamage(BlockDamageEvent event) {
 		if (event.getPlayer() == null
-				|| event.getPlayer().getItemInHand() == null
-				|| event.getPlayer().getItemInHand().getType() == Material.AIR)
+				|| event.getPlayer().getInventory().getItemInMainHand() == null
+				|| event.getPlayer().getInventory().getItemInMainHand().getType() == Material.AIR)
 			return;
 
-		ItemMeta im = event.getPlayer().getItemInHand().getItemMeta();
+		ItemMeta im = event.getPlayer().getInventory().getItemInMainHand().getItemMeta();
 		if (im.getLore() == null || im.getLore().isEmpty())
 			return;
 		for (String lore : im.getLore()) {
@@ -126,10 +126,10 @@ public class EnchantListener implements Listener, SubPlugin {
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void blockBreak(BlockBreakEvent event) {
 		if (event.getPlayer() == null
-				|| event.getPlayer().getItemInHand() == null
-				|| event.getPlayer().getItemInHand().getType() == Material.AIR)
+				|| event.getPlayer().getInventory().getItemInMainHand() == null
+				|| event.getPlayer().getInventory().getItemInMainHand().getType() == Material.AIR)
 			return;
-		ItemMeta im = event.getPlayer().getItemInHand().getItemMeta();
+		ItemMeta im = event.getPlayer().getInventory().getItemInMainHand().getItemMeta();
 		if (im.getLore() == null || im.getLore().isEmpty())
 			return;
 		for (String lore : im.getLore()) {
@@ -143,7 +143,7 @@ public class EnchantListener implements Listener, SubPlugin {
 	}
 
 	private void forge(Block block, Player player) {
-		Collection<ItemStack> drops = block.getDrops(player.getItemInHand());
+		Collection<ItemStack> drops = block.getDrops(player.getInventory().getItemInMainHand());
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		block.setType(Material.AIR);
 		for (ItemStack item : drops) {
@@ -159,13 +159,13 @@ public class EnchantListener implements Listener, SubPlugin {
 			player.getWorld().dropItemNaturally(block.getLocation(), is);
 
 		final short duraDiff = 7;
-		if (player.getItemInHand().getDurability() + duraDiff > player
-				.getItemInHand().getType().getMaxDurability()) {
-			player.setItemInHand(new ItemStack(Material.AIR));
+		if (player.getInventory().getItemInMainHand().getDurability() + duraDiff > player
+				.getInventory().getItemInMainHand().getType().getMaxDurability()) {
+			player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 		} else
-			player.getItemInHand()
+			player.getInventory().getItemInMainHand()
 					.setDurability(
-							(short) (player.getItemInHand().getDurability() + duraDiff));
+							(short) (player.getInventory().getItemInMainHand().getDurability() + duraDiff));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -194,13 +194,13 @@ public class EnchantListener implements Listener, SubPlugin {
 				new ItemStack(Material.BEDROCK, 1));
 		logBlockBreak(player, block);
 		final short duraDiff = 50;
-		if (player.getItemInHand().getDurability() + duraDiff > player
-				.getItemInHand().getType().getMaxDurability()) {
-			player.setItemInHand(new ItemStack(Material.AIR));
+		if (player.getInventory().getItemInMainHand().getDurability() + duraDiff > player
+				.getInventory().getItemInMainHand().getType().getMaxDurability()) {
+			player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 		} else
-			player.getItemInHand()
+			player.getInventory().getItemInMainHand()
 					.setDurability(
-							(short) (player.getItemInHand().getDurability() + duraDiff));
+							(short) (player.getInventory().getItemInMainHand().getDurability() + duraDiff));
 
 	}
 
@@ -315,13 +315,13 @@ public class EnchantListener implements Listener, SubPlugin {
 						Utils.removeFromInventory(p, new ItemStack(
 								Material.TNT, level));
 						int duraDamage = 20 * level;
-						if (p.getItemInHand().getDurability() + duraDamage > p
-								.getItemInHand().getType().getMaxDurability()) {
-							p.setItemInHand(new ItemStack(Material.AIR));
+						if (p.getInventory().getItemInMainHand().getDurability() + duraDamage > p
+								.getInventory().getItemInMainHand().getType().getMaxDurability()) {
+							p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 						} else
-							p.getItemInHand()
+							p.getInventory().getItemInMainHand()
 									.setDurability(
-											(short) (p.getItemInHand()
+											(short) (p.getInventory().getItemInMainHand()
 													.getDurability() + duraDamage));
 					}
 				}
@@ -372,12 +372,12 @@ public class EnchantListener implements Listener, SubPlugin {
 		}
 		/* End of Sly */
 		/* General weapon enchantments */
-		if (p.getItemInHand() == null
-				|| p.getItemInHand().getType() == Material.AIR)
+		if (p.getInventory().getItemInMainHand() == null
+				|| p.getInventory().getItemInMainHand().getType() == Material.AIR)
 			return;
-		if (p.getItemInHand().hasItemMeta()
-				&& p.getItemInHand().getItemMeta().hasLore()) {
-			List<String> lore = p.getItemInHand().getItemMeta().getLore();
+		if (p.getInventory().getItemInMainHand().hasItemMeta()
+				&& p.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
+			List<String> lore = p.getInventory().getItemInMainHand().getItemMeta().getLore();
 			if (lore.isEmpty())
 				return;
 			String spid = null;
@@ -533,7 +533,7 @@ public class EnchantListener implements Listener, SubPlugin {
 					return;
 				}
 		} else if (pie.getPlayer() != null
-				&& pie.getPlayer().getItemInHand() != null
+				&& pie.getPlayer().getInventory().getItemInMainHand() != null
 				&& pie.getAction() == Action.RIGHT_CLICK_BLOCK
 				&& (pie.getClickedBlock().getType() == Material.WALL_SIGN || pie
 						.getClickedBlock().getType() == Material.SIGN_POST)) {
@@ -545,7 +545,7 @@ public class EnchantListener implements Listener, SubPlugin {
 				if (sign.getLine(1).equalsIgnoreCase(h.getName())) {
 					enchant = h;
 				}
-			if (!EnchantItem.isValid(pie.getPlayer().getItemInHand(),
+			if (!EnchantItem.isValid(pie.getPlayer().getInventory().getItemInMainHand(),
 					enchant.getHoldingType())) {
 				pie.getPlayer()
 						.sendMessage(
@@ -561,7 +561,7 @@ public class EnchantListener implements Listener, SubPlugin {
 										+ EnchantItem.toString(enchant
 												.getHoldingType()));
 				return;
-			} else if (!HcEssentials.economy.has(pie.getPlayer().getName(),
+			} else if (!HcEssentials.economy.has(pie.getPlayer(),
 					Integer.parseInt(sign.getLine(3).substring(1)))) {
 				pie.getPlayer().sendMessage(
 						ChatColor.GRAY
@@ -576,11 +576,10 @@ public class EnchantListener implements Listener, SubPlugin {
 								+ " you have $"
 								+ new DecimalFormat("####.##")
 										.format(HcEssentials.economy
-												.getBalance(pie.getPlayer()
-														.getName())) + ".");
+												.getBalance(pie.getPlayer())) + ".");
 				return;
 			}
-			ItemStack is = pie.getPlayer().getItemInHand();
+			ItemStack is = pie.getPlayer().getInventory().getItemInMainHand();
 			if (is.getItemMeta() != null && is.getItemMeta().getLore() != null)
 				for (String str : is.getItemMeta().getLore())
 					if (str.contains(enchant.getName())) {
@@ -603,8 +602,8 @@ public class EnchantListener implements Listener, SubPlugin {
 				level = EnchantItem.numberalToNum(sign.getLine(2));
 			is = enchant.addToItem(is, level);
 			is = addEnchantGlow(is);
-			pie.getPlayer().setItemInHand(is);
-			HcEssentials.economy.withdrawPlayer(pie.getPlayer().getName(),
+			pie.getPlayer().getInventory().setItemInMainHand(is);
+			HcEssentials.economy.withdrawPlayer(pie.getPlayer(),
 					Integer.parseInt(sign.getLine(3).substring(1)));
 			pie.getPlayer().sendMessage(
 					ChatColor.GRAY + "[" + ChatColor.GOLD + "HcEnchant"
@@ -721,6 +720,7 @@ public class EnchantListener implements Listener, SubPlugin {
 			p.getEquipment().getBoots().setDurability(dura);
 	}
 
+	@SuppressWarnings("unused")
 	private void setArmourAtSlot(ItemType it, Player p,
 			org.bukkit.inventory.ItemStack is) {
 		if (it == ItemType.HELMET)

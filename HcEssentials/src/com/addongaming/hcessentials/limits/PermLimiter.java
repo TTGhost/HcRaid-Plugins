@@ -30,6 +30,11 @@ public class PermLimiter implements Listener, SubPlugin {
 		fc.addDefault("limit.perm.errorMsg",
 				"&2[&6HcRaid&2] &cSorry, you need a higher rank to use this. /buyrank");
 		fc.addDefault("limit.perm.ids", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add("351:2|HcRaid.premium");
 			}

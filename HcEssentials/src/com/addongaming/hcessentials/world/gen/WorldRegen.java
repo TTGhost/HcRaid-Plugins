@@ -92,7 +92,6 @@ public class WorldRegen implements Listener, SubPlugin {
 		}
 	}
 
-	@SuppressWarnings("serial")
 	public static final List<Material> disallowed = new ArrayList<Material>();
 
 	@Override
@@ -105,6 +104,7 @@ public class WorldRegen implements Listener, SubPlugin {
 		jp.getServer().getScheduler().cancelTasks(jp);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onEnable() {
 		if (!jp.getConfig().getBoolean("worldgen.enabled"))

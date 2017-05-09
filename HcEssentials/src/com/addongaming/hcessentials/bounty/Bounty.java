@@ -301,6 +301,7 @@ public class Bounty implements SubPlugin, Listener, CommandExecutor {
 			}
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void playerDied(PlayerDeathEvent event) {
 		BountyObj bo = null;
@@ -394,6 +395,7 @@ public class Bounty implements SubPlugin, Listener, CommandExecutor {
 		oos.close();
 	}
 
+	@SuppressWarnings("deprecation")
 	private void setBounty(Player player, String[] arg3) {
 		if (arg3.length < 3) {
 			message(player, "/bounty set <username> <amount>");
@@ -467,6 +469,7 @@ public class Bounty implements SubPlugin, Listener, CommandExecutor {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void playerRightClickHead(PlayerInteractEvent event) {
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK

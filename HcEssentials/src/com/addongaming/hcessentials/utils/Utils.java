@@ -146,7 +146,6 @@ public class Utils {
 	public static Location loadLoc(String string) {
 		String[] split = string.split("[|]");
 		double x, y, z;
-		float yaw = -1, pitch = -1;
 		World world = Bukkit.getWorld(split[0]);
 		x = Double.parseDouble(split[1]);
 		y = Double.parseDouble(split[2]);
@@ -174,7 +173,6 @@ public class Utils {
 				+ " Y: " + loc.getBlockY() + " Z: " + loc.getBlockZ());
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void removeFromInventory(Player player, ItemStack... items) {
 		player.getInventory().removeItem(items);
 		player.updateInventory();

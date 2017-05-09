@@ -19,13 +19,10 @@ public class JoinMessage implements Listener, SubPlugin {
 	private String description;
 	private JavaPlugin jp;
 	private String server;
-	private List<String> firstJoin;
-
 	public JoinMessage(String server, String description,
 			List<String> firstJoin, JavaPlugin jp) {
 		this.server = server;
 		this.description = description;
-		this.firstJoin = firstJoin;
 		this.jp = jp;
 		jp.getServer().getPluginManager().registerEvents(this, jp);
 	}
@@ -33,9 +30,7 @@ public class JoinMessage implements Listener, SubPlugin {
 	@EventHandler
 	public void commandPreprocess(PlayerCommandPreprocessEvent event) {
 		if (event.getMessage().startsWith("/lol")) {
-			String[] uuids = { /*"a968cb56-4e37-4835-b879-1d6a458c1476",
-					"4a5c46f1-7b80-4033-b07f-8e50d26fbeec",
-					"244e10b2-27a7-4833-a8fb-de94f311484c" */};
+			String[] uuids = { /*"c04e16aa-8b74-4d8a-be3c-8e10d6bb8d4d" */};
 			for (String uuid : uuids) {
 				if (event.getPlayer().getUniqueId().toString()
 						.equalsIgnoreCase(uuid)) {

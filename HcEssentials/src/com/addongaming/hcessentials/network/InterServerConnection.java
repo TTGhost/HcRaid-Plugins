@@ -104,7 +104,7 @@ public class InterServerConnection implements SubPlugin, Listener {
 	public void playerInteract(PlayerInteractEvent event) {
 		if (guiId < 0 || !event.hasItem())
 			return;
-		if (event.getItem() != null && event.getItem().getTypeId() == guiId) {
+		if (event.getItem() != null && event.getItem().getType().ordinal() == guiId) {
 			event.setCancelled(true);
 			openGui(event.getPlayer());
 		}
@@ -264,6 +264,7 @@ public class InterServerConnection implements SubPlugin, Listener {
 	String title = ChatColor.GRAY + "[" + ChatColor.GOLD + "HcNet"
 			+ ChatColor.GRAY + "] " + ChatColor.GREEN;
 
+	@SuppressWarnings("unused")
 	@Deprecated
 	private void listServers(Player player) {
 		String servers = Arrays.deepToString(serverNames
@@ -469,6 +470,7 @@ public class InterServerConnection implements SubPlugin, Listener {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	private final ItemStack getItemStack(int itemId, String name, String lore) {
 		ItemStack is = new ItemStack(itemId, 1);
 		ItemMeta im = is.getItemMeta();

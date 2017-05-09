@@ -22,11 +22,13 @@ public class PermBlock {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean isValid(Block block) {
 		return block.getTypeId() == id
 				&& (data > -1 && block.getData() == data);
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean isValid(ItemStack item) {
 		return item.getTypeId() == id
 				&& (data > -1 && item.getDurability() == data);

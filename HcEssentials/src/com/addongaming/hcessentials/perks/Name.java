@@ -56,16 +56,16 @@ public class Name implements CommandExecutor, SubPlugin {
 			return true;
 		}
 		Player p = (Player) arg0;
-		if (p.getItemInHand() == null
-				|| p.getItemInHand().getType() == Material.AIR) {
+		if (p.getInventory().getItemInMainHand() == null
+				|| p.getInventory().getItemInMainHand().getType() == Material.AIR) {
 			p.sendMessage(ChatColor.RED
 					+ "You must be holding a valid in your hand to issue this command.");
 			return true;
 		}
-		ItemMeta im = p.getItemInHand().getItemMeta();
+		ItemMeta im = p.getInventory().getItemInMainHand().getItemMeta();
 		if (sb.toString().equalsIgnoreCase("off")) {
 			im.setDisplayName(null);
-			p.getItemInHand().setItemMeta(im);
+			p.getInventory().getItemInMainHand().setItemMeta(im);
 			return true;
 		}
 		if (!arg0.hasPermission(permission)) {
@@ -73,12 +73,12 @@ public class Name implements CommandExecutor, SubPlugin {
 					+ "You do not have permission to use this command. You may use /name off");
 			return true;
 		}
-		if (p.getItemInHand().getType() != Material.NAME_TAG)
+		if (p.getInventory().getItemInMainHand().getType() != Material.NAME_TAG)
 			im.setDisplayName(ChatColor.AQUA + "[*] " + ChatColor.BLUE
 					+ sb.toString() + ChatColor.RESET);
 		else
 			im.setDisplayName(sb.toString());
-		p.getItemInHand().setItemMeta(im);
+		p.getInventory().getItemInMainHand().setItemMeta(im);
 		arg0.sendMessage(ChatColor.GRAY + "Set item name!");
 		return true;
 	}

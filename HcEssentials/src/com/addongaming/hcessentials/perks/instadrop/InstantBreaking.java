@@ -25,6 +25,11 @@ public class InstantBreaking implements SubPlugin, Listener {
 		FileConfiguration fc = jp.getConfig();
 		fc.addDefault("instabreak.enabled", Boolean.FALSE);
 		fc.addDefault("instabreak.blocks", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add("melon_block|Hcraid.creeper");
 				this.add("pumpkin|Hcraid.ghast");
@@ -50,6 +55,7 @@ public class InstantBreaking implements SubPlugin, Listener {
 			}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onEnable() {
 		FileConfiguration fc = jp.getConfig();

@@ -193,6 +193,7 @@ public class SpecialSpawns implements SubPlugin, Listener, CommandExecutor {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private void spawnSpecial() {
 		Random r = new Random();
 		int x = r.nextInt(7000) + 500;
@@ -239,16 +240,14 @@ public class SpecialSpawns implements SubPlugin, Listener, CommandExecutor {
 		z.getEquipment().setBoots(
 				SpecialItems.generateArmourPiece(Material.DIAMOND_BOOTS, st,
 						firstNamMain));
-		z.getEquipment().setItemInHand(
+		z.getEquipment().setItemInMainHand(
 				SpecialItems.generateSword(Material.DIAMOND_SWORD, st));
 		z.setCustomNameVisible(true);
 		String fw = SpecialItems.getRandomArmourFirstName(SpecialTypes.COMMON)
 				+ " ";
-		SpecialTypes ss = SpecialTypes.COMMON;
-		if (st == SpecialTypes.LEGENDARY)
-			ss = SpecialTypes.SPECIAL;
-		else if (st == SpecialTypes.UBER)
-			ss = SpecialTypes.LEGENDARY;
+		if (st == SpecialTypes.LEGENDARY) {
+		} else if (st == SpecialTypes.UBER) {
+		}
 		for (int i = 0; i < new Random().nextInt(5) + 4; i++) {
 			LivingEntity ent = (LivingEntity) pl.getWorld().spawnEntity(pl,
 					EntityType.ZOMBIE);
@@ -265,7 +264,7 @@ public class SpecialSpawns implements SubPlugin, Listener, CommandExecutor {
 			ent.getEquipment().setBoots(
 					SpecialItems.generateArmourPiece(Material.GOLD_BOOTS,
 							SpecialTypes.COMMON, fw));
-			ent.getEquipment().setItemInHand(
+			ent.getEquipment().setItemInMainHand(
 					SpecialItems.generateSword(Material.GOLD_SWORD,
 							SpecialTypes.COMMON));
 			mobIds.add(ent.getEntityId());
@@ -324,7 +323,7 @@ public class SpecialSpawns implements SubPlugin, Listener, CommandExecutor {
 			ItemStack helm = ee.getHelmet();
 			ItemStack chest = ee.getChestplate();
 			ItemStack legs = ee.getLeggings();
-			ItemStack sword = ee.getItemInHand();
+			ItemStack sword = ee.getItemInMainHand();
 
 			if (boots != null && boots.getType() != Material.AIR) {
 				boots.setDurability((short) 0);

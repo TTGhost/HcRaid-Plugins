@@ -3,7 +3,6 @@ package com.addongaming.hcessentials.perks;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -26,6 +25,7 @@ import com.addongaming.hcessentials.logging.DataLog;
 import com.addongaming.hcessentials.perks.near.ENear;
 import com.addongaming.hcessentials.perks.near.NearInstance;
 import com.addongaming.hcessentials.utils.Utils;
+import com.earth2me.essentials.OfflinePlayer;
 
 public class NearCommand implements SubPlugin, CommandExecutor {
 	private JavaPlugin jp;
@@ -63,12 +63,12 @@ public class NearCommand implements SubPlugin, CommandExecutor {
 			}
 			int radiusExtra = radius > en.getRadius() ? (radius - en
 					.getRadius()) * cost : 0;
-			if (HcEssentials.economy.getBalance(arg0.getName()) < radiusExtra) {
+			if (HcEssentials.economy.getBalance(new OfflinePlayer(arg0.getName(), jp.getServer())) < radiusExtra) {
 				arg0.sendMessage(ChatColor.RED
 						+ "You need an extra $"
 						+ new DecimalFormat("##.#").format(radiusExtra
-								- HcEssentials.economy.getBalance(arg0
-										.getName())) + " for that radius.");
+								- HcEssentials.economy.getBalance(new OfflinePlayer(arg0
+										.getName(), jp.getServer()))) + " for that radius.");
 				return true;
 			}
 			if (timeIsUp(arg0.getName())) {
@@ -139,7 +139,7 @@ public class NearCommand implements SubPlugin, CommandExecutor {
 		if (allPlayers.isEmpty()) {
 			if (cost > 0) {
 				cost /= 2;
-				HcEssentials.economy.withdrawPlayer(p.getName(), cost);
+				HcEssentials.economy.withdrawPlayer(p, cost);
 			}
 			p.sendMessage(ChatColor.RED
 					+ "No players found. "
@@ -157,7 +157,7 @@ public class NearCommand implements SubPlugin, CommandExecutor {
 		sb.deleteCharAt(sb.length() - 1);
 		sb.append(".");
 		dl.logPlayer(p, sb.toString());
-		HcEssentials.economy.withdrawPlayer(p.getName(), cost);
+		HcEssentials.economy.withdrawPlayer(p, cost);
 		if (allPlayers.size() == 1)
 			p.sendMessage(ChatColor.GREEN
 					+ " The following player has been located! "

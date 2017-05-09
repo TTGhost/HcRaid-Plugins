@@ -109,6 +109,7 @@ public class WorldManagement implements CommandExecutor, SubPlugin {
 
 	ArrayList<String> temp2 = new ArrayList<String>();
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {

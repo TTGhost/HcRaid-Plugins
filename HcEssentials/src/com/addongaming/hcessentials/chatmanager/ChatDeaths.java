@@ -1,7 +1,6 @@
 package com.addongaming.hcessentials.chatmanager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -24,10 +23,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ChatDeaths implements Listener, CommandExecutor {
 	ArrayList<String> allToggled = new ArrayList<String>();
 	ArrayList<String> currentlyToggled = new ArrayList<String>();
-	private final JavaPlugin jp;
-
+	@SuppressWarnings("unchecked")
 	public ChatDeaths(JavaPlugin jp) {
-		this.jp = jp;
 		if (ChatManager.fileExists("chatdeaths.sav")) {
 			try {
 				allToggled = (ArrayList<String>) ChatManager

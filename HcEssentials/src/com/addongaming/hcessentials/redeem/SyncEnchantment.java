@@ -19,6 +19,7 @@ public class SyncEnchantment implements Serializable {
 	 * @param e
 	 *            (Enchantment)
 	 */
+	@SuppressWarnings("deprecation")
 	public SyncEnchantment(final Enchantment e) {
 		id = e.getId();
 		level = e.getMaxLevel();

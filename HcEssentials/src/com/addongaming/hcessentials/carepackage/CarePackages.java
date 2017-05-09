@@ -99,7 +99,7 @@ public class CarePackages implements CommandExecutor, Listener, SubPlugin {
 			loc.setY(255.0);
 			Block b = loc.getBlock();
 			while (((b = b.getRelative(BlockFace.DOWN))).getY() > 1) {
-				if (b.getType() == Material.PISTON_BASE
+				if (b.getType() == Material.STAINED_GLASS
 						&& b.getData() == (byte) 6) {
 					b.setType(Material.AIR);
 					break;
@@ -109,10 +109,11 @@ public class CarePackages implements CommandExecutor, Listener, SubPlugin {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void blockBreak(BlockBreakEvent event) {
 		Block b = event.getBlock();
-		if (b.getType() == Material.PISTON_BASE && b.getData() == (byte) 6) {
+		if (b.getType() == Material.STAINED_GLASS && b.getData() == (byte) 6) {
 			b.setType(Material.AIR);
 			for (Iterator<Location> iter = cpLocs.keySet().iterator(); iter
 					.hasNext();)
@@ -186,11 +187,11 @@ public class CarePackages implements CommandExecutor, Listener, SubPlugin {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	private final void spawnCarepackage(final Location l) {
-		l.getBlock().setType(Material.PISTON_BASE);
+		l.getBlock().setType(Material.STAINED_GLASS);
 		l.getBlock().setData((byte) 6);
 		cpLocs.put(l, new Date(new Date().getTime() + (despawnTime * 60000)));
-		Location drop = l;
 		// drop.setY(180);
 		Firework fw = (Firework) l.getWorld().spawnEntity(l,
 				EntityType.FIREWORK);
@@ -323,6 +324,8 @@ public class CarePackages implements CommandExecutor, Listener, SubPlugin {
 		}
 		if (specialArmour) {
 			int random = new Random().nextInt(10000) + 1;
+			if (random >= 9800)
+				list.add(this.generateRandomArmourPiece(SpecialTypes.UBER));
 		}
 		return list.toArray(new ItemStack[list.size()]);
 	}
@@ -380,6 +383,7 @@ public class CarePackages implements CommandExecutor, Listener, SubPlugin {
 			ObjectOutputStream oos = new ObjectOutputStream(
 					new FileOutputStream(file));
 			oos.writeObject(si);
+			oos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

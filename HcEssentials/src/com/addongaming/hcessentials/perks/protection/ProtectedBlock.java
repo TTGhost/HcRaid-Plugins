@@ -16,6 +16,7 @@ public class ProtectedBlock {
 		this.permission = permission;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean isProtected(Block b) {
 		String name = HcEssentials.essentials.getItemDb().name(
 				new ItemStack(b.getType(), 1, b.getData()));
@@ -24,6 +25,7 @@ public class ProtectedBlock {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean canUse(Player p, Block b) {
 		short data = b.getData();
 		if (b.getType() == Material.STEP && data >= 8)

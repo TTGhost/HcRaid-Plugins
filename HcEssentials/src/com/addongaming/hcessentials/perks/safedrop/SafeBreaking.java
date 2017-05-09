@@ -27,6 +27,11 @@ public class SafeBreaking implements SubPlugin, Listener {
 		FileConfiguration fc = jp.getConfig();
 		fc.addDefault("safedrop.enabled", Boolean.FALSE);
 		fc.addDefault("safedrop.blocks", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add(Material.BOOKSHELF.name() + "|" + ItemType.AXE);
 			}
@@ -42,10 +47,11 @@ public class SafeBreaking implements SubPlugin, Listener {
 
 	@EventHandler
 	public void blockBreak(BlockBreakEvent event) {
-		if (event.isCancelled() || event.getPlayer().getItemInHand() == null)
+		if (event.isCancelled() || event.getPlayer().getInventory().getItemInMainHand() == null)
 			return;
 		for (SafeDropBlock pb : safeDrop)
 			if (pb.canUse(event.getPlayer(), event.getBlock())) {
+				@SuppressWarnings("deprecation")
 				ItemStack is = new ItemStack(event.getBlock().getType(), 1,
 						event.getBlock().getData());
 				event.getBlock().getDrops().clear();
@@ -56,6 +62,7 @@ public class SafeBreaking implements SubPlugin, Listener {
 			}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onEnable() {
 		FileConfiguration fc = jp.getConfig();

@@ -19,6 +19,7 @@ public class SerEnchantment implements Serializable {
 	 * @param e
 	 *            (Enchantment)
 	 */
+	@SuppressWarnings("deprecation")
 	public SerEnchantment(final Enchantment e) {
 		id = e.getId();
 		level = e.getMaxLevel();

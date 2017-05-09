@@ -19,10 +19,7 @@ public class ChatSorting implements Listener {
 
 	public static HashMap<String, String> AntiRepeat = new HashMap<String, String>();
 	private final List<String> swears = new ArrayList<String>();
-	private JavaPlugin jp;
-
 	public ChatSorting(JavaPlugin jp) {
-		this.jp = jp;
 		try {
 			Scanner scanner = new Scanner(new File(jp.getDataFolder()
 					+ File.separator + "chatmanager" + File.separator
@@ -57,7 +54,7 @@ public class ChatSorting implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void AntiRepeatingMessage(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
-		String message = e.getMessage();
+		e.getMessage();
 		if (p.hasPermission("HcRaid.MOD")
 				|| e.getMessage().startsWith("[FLTRD]")) {
 			return;

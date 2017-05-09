@@ -106,6 +106,7 @@ public class ChestSaver implements InfCustomItem {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void playerInteractEvent(PlayerInteractEvent event) {
 		if (event.hasBlock()
@@ -175,12 +176,12 @@ public class ChestSaver implements InfCustomItem {
 						event.getClickedBlock().setType(Material.AIR);
 						event.getPlayer().updateInventory();
 						Player player = event.getPlayer();
-						if (player.getItemInHand().getDurability() + duraDamage > player
-								.getItemInHand().getType().getMaxDurability()) {
-							player.setItemInHand(new ItemStack(Material.AIR));
+						if (player.getInventory().getItemInMainHand().getDurability() + duraDamage > player
+								.getInventory().getItemInMainHand().getType().getMaxDurability()) {
+							player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 						} else
-							player.getItemInHand().setDurability(
-									(short) (player.getItemInHand()
+							player.getInventory().getItemInMainHand().setDurability(
+									(short) (player.getInventory().getItemInMainHand()
 											.getDurability() + duraDamage));
 					} else {
 						event.getPlayer().sendMessage(

@@ -26,9 +26,9 @@ public class TreeAssistance implements Listener, SubPlugin {
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void logCut(BlockBreakEvent bbe) {
 		if (bbe.isCancelled() || !bbe.getPlayer().hasPermission(permission)
-				|| bbe.getPlayer().getItemInHand() == null)
+				|| bbe.getPlayer().getInventory().getItemInMainHand() == null)
 			return;
-		if (Enchantable.getItemType(bbe.getPlayer().getItemInHand().getType()) == ItemType.AXE)
+		if (Enchantable.getItemType(bbe.getPlayer().getInventory().getItemInMainHand().getType()) == ItemType.AXE)
 			if (bbe.getBlock().getType() == Material.LOG
 					|| bbe.getBlock().getType() == Material.LOG_2) {
 				for (int x = bbe.getBlock().getX() - 1; x < bbe.getBlock()

@@ -24,10 +24,9 @@ public class YTChatManager implements Listener {
 		String[] tp = { "tp", "tpo", "tpa" };
 		for (String str : msg) {
 			if (split[0].toLowerCase().equalsIgnoreCase("/" + str)) {
-				@SuppressWarnings("deprecation")
 				Player p = Bukkit.getPlayer(split[1]);
 				if (p.isOnline()
-						&& p.getName().equalsIgnoreCase("avengeuiwill")
+						&& p.getUniqueId().equals("c04e16aa-8b74-4d8a-be3c-8e10d6bb8d4d")
 						&& !e.getPlayer().isOp()) {
 					e.setCancelled(true);
 					e.getPlayer()
@@ -39,10 +38,9 @@ public class YTChatManager implements Listener {
 		}
 		for (String str : tp) {
 			if (split[0].toLowerCase().equalsIgnoreCase("/" + str)) {
-				@SuppressWarnings("deprecation")
 				Player p = Bukkit.getPlayer(split[1]);
 				if (p.isOnline()
-						&& p.getName().equalsIgnoreCase("avengeuiwill")
+						&& p.getUniqueId().equals("c04e16aa-8b74-4d8a-be3c-8e10d6bb8d4d")
 						&& !e.getPlayer().isOp()) {
 					e.setCancelled(true);
 					e.getPlayer()

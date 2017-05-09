@@ -54,6 +54,11 @@ public class AutoAnnouncer implements SubPlugin {
 		fc.addDefault("announcer.enabled", true);
 		fc.addDefault("announcer.minutesbetween", 10);
 		List<String> configJList = new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add("{text:\"[\",color:gold,extra:[{text:\"Broadcast\",color:dark_red},{text:\"]\",color:gold},{text:\" Click this to visit our forums!\",color:green,clickEvent:{action:open_url,value:\"http://www.hcraid.com\"}}]}");
 				this.add(" &aJoin an talk on our Temspeak server! ts.hcraid.com");

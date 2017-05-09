@@ -163,6 +163,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 		}
 		SimpleDateFormat SDF = new SimpleDateFormat("MM-dd hh:mm:ss");
 		String str = args[0];
+		@SuppressWarnings("deprecation")
 		OfflinePlayer op = Bukkit.getOfflinePlayer(str);
 		if (!claimedMap.containsKey(op.getUniqueId().toString())) {
 			sendMessage(
@@ -194,6 +195,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean delRedeem(Player sender, String[] args) {
 		if (args.length != 1 && args.length != 2) {
 			sendMessage(sender, "Please use /delredeem <name> [group]", false);
@@ -228,10 +230,10 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 		dl.logPlayer(
 				p,
 				"Ending balance: "
-						+ HcEssentials.economy.getBalance(p.getName()));
-		HcEssentials.economy.depositPlayer(p.getName(), money);
+						+ HcEssentials.economy.getBalance(p));
+		HcEssentials.economy.depositPlayer(p, money);
 		dl.logPlayer(p,
-				"End balance: " + HcEssentials.economy.getBalance(p.getName()));
+				"End balance: " + HcEssentials.economy.getBalance(p));
 	}
 
 	@EventHandler
@@ -477,9 +479,9 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 	@EventHandler
 	public void playerInteractEvent(PlayerInteractEntityEvent event) {
 		if (event.getRightClicked().getType() == EntityType.ITEM_FRAME) {
-			if (checkItemRemoval(event.getPlayer().getItemInHand())) {
+			if (checkItemRemoval(event.getPlayer().getInventory().getItemInMainHand())) {
 				event.setCancelled(true);
-				event.getPlayer().setItemInHand(new ItemStack(Material.AIR));
+				event.getPlayer().getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 				event.getPlayer().updateInventory();
 			}
 		}
@@ -491,7 +493,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 		if (event.getAction() == Action.RIGHT_CLICK_AIR
 				|| event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			Player p = event.getPlayer();
-			ItemStack is = p.getItemInHand();
+			ItemStack is = p.getInventory().getItemInMainHand();
 			if (is == null || is.getItemMeta() == null
 					|| is.getItemMeta().getDisplayName() == null)
 				return;
@@ -565,7 +567,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 										+ sdf.format(new Date())
 										+ " but seems to have already redeemed at : "
 										+ sdf.format(srt.getDateUsed()));
-								p.setItemInHand(new ItemStack(Material.AIR));
+								p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 								return;
 							}
 							srt.setDateUsed(new Date().getTime());
@@ -614,7 +616,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 					pw.println(Character.LINE_SEPARATOR);
 					pw.println("Player: " + p.getName()
 							+ " has finished redeeming their kit.");
-					p.setItemInHand(new ItemStack(Material.AIR));
+					p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 					claimedMap.put(p.getUniqueId().toString(), newList);
 					sendMessage(p, "Here's your stuff!", true);
 					saveInfo();
@@ -863,7 +865,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 	private boolean setupEconomy() {
 		RegisteredServiceProvider<Economy> economyProvider = jp.getServer()
 				.getServicesManager()
-				.getRegistration(net.milkbowl.vault.economy.Economy.class);
+				.getRegistration(Economy.class);
 		if (economyProvider != null) {
 			economy = economyProvider.getProvider();
 		}
@@ -875,7 +877,7 @@ public class Redeem implements Listener, CommandExecutor, SubPlugin {
 		RegisteredServiceProvider<Permission> permissionProvider = jp
 				.getServer()
 				.getServicesManager()
-				.getRegistration(net.milkbowl.vault.permission.Permission.class);
+				.getRegistration(Permission.class);
 		if (permissionProvider != null) {
 			permission = permissionProvider.getProvider();
 		}

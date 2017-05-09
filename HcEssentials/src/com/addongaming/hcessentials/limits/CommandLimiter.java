@@ -19,6 +19,11 @@ public class CommandLimiter implements SubPlugin, Listener {
 		FileConfiguration fc = jp.getConfig();
 		fc.addDefault("limit.command.enabled", true);
 		fc.addDefault("limit.command.commands", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add("/rank");
 			}
@@ -47,6 +52,7 @@ public class CommandLimiter implements SubPlugin, Listener {
 
 	ArrayList<String> al = new ArrayList<String>();
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onEnable() {
 		if (jp.getConfig().getBoolean("limit.command.enabled")) {

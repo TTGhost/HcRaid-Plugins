@@ -19,6 +19,7 @@ public class SerInventory implements Serializable {
 	 * 
 	 * @param inventory
 	 */
+	@SuppressWarnings("deprecation")
 	public SerInventory(final ItemStack[] inventory) {
 		this.inventory = new SerItemStack[inventory.length];
 		for (int pos = 0; pos < inventory.length; pos++) {

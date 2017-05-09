@@ -46,7 +46,6 @@ public class CraftingLimiter implements Listener {
 				jp.getServer().getScheduler()
 						.scheduleSyncDelayedTask(jp, new Runnable() {
 
-							@SuppressWarnings("deprecation")
 							@Override
 							public void run() {
 								event.getInventory().setItem(0,

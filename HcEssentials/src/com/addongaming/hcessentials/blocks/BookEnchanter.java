@@ -143,8 +143,8 @@ public class BookEnchanter implements Listener, CommandExecutor {
 	}
 
 	private void enchantItems(Player p, String[] arg3) {
-		if (p.getItemInHand() == null
-				|| !Enchantable.isEnchantable(p.getItemInHand().getType())) {
+		if (p.getInventory().getItemInMainHand() == null
+				|| !Enchantable.isEnchantable(p.getInventory().getItemInMainHand().getType())) {
 			p.sendMessage(pos + "Please hold an enchantable item in your hand.");
 			return;
 		}
@@ -161,7 +161,7 @@ public class BookEnchanter implements Listener, CommandExecutor {
 			return;
 		}
 		if (p.isOp() && force) {
-			p.getItemInHand().addUnsafeEnchantment(ench,
+			p.getInventory().getItemInMainHand().addUnsafeEnchantment(ench,
 					Integer.parseInt(arg3[2]));
 			return;
 		}
@@ -194,8 +194,8 @@ public class BookEnchanter implements Listener, CommandExecutor {
 			return;
 		}
 		int level = Integer.parseInt(arg3[2]);
-		if (p.getItemInHand().containsEnchantment(ench)) {
-			int currLevel = p.getItemInHand().getEnchantmentLevel(ench);
+		if (p.getInventory().getItemInMainHand().containsEnchantment(ench)) {
+			int currLevel = p.getInventory().getItemInMainHand().getEnchantmentLevel(ench);
 			if (currLevel >= level) {
 				p.sendMessage(pos
 						+ "You already have that enchantment with the same level, or higher!");
@@ -213,7 +213,7 @@ public class BookEnchanter implements Listener, CommandExecutor {
 					randomNum = 0;
 				if (randomNum == 0) {
 					p.sendMessage(pos + "Enjoy your new enchanted item!");
-					p.getItemInHand().addUnsafeEnchantment(ench, level);
+					p.getInventory().getItemInMainHand().addUnsafeEnchantment(ench, level);
 				} else {
 					p.sendMessage(pos + "Your enchantment failed");
 				}
@@ -284,7 +284,6 @@ public class BookEnchanter implements Listener, CommandExecutor {
 		jp.getServer().getScheduler()
 				.scheduleSyncDelayedTask(jp, new Runnable() {
 
-					@SuppressWarnings("deprecation")
 					@Override
 					public void run() {
 						p.updateInventory();

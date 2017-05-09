@@ -12,7 +12,7 @@ public class NCPCleaner implements Runnable {
 			System.out.println("Removed debug");
 		} catch (Exception e) {
 			System.out
-					.println("An error has occured removeing players from no cheat.");
+					.println("An error has occured removing players from NoCheatPlus.");
 			System.out.println("Printing the stack trace.");
 			System.out.println("");
 			System.out.println("============================================");

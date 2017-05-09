@@ -214,7 +214,6 @@ public class Recycler implements Listener {
 		jp.getServer().getScheduler()
 				.scheduleSyncDelayedTask(jp, new Runnable() {
 
-					@SuppressWarnings("deprecation")
 					@Override
 					public void run() {
 						p.updateInventory();

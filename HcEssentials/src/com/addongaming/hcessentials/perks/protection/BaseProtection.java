@@ -32,6 +32,11 @@ public class BaseProtection implements SubPlugin, Listener {
 		FileConfiguration fc = jp.getConfig();
 		fc.addDefault("protectedblocks.enabled", Boolean.FALSE);
 		fc.addDefault("protectedblocks.blocks", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add("bricks|HcRaid.Ender");
 			}
@@ -55,6 +60,7 @@ public class BaseProtection implements SubPlugin, Listener {
 				}
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void pistonRetract(BlockPistonRetractEvent event) {
 		if (event.isSticky()) {
@@ -108,6 +114,7 @@ public class BaseProtection implements SubPlugin, Listener {
 			}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onEnable() {
 		FileConfiguration fc = jp.getConfig();

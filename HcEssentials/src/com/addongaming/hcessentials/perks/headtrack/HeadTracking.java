@@ -26,26 +26,25 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.addongaming.hcessentials.HcEssentials;
 import com.addongaming.hcessentials.SubPlugin;
-import com.addongaming.hcessentials.config.Config;
 import com.addongaming.hcessentials.logging.DataLog;
 import com.addongaming.hcessentials.utils.Utils;
 import com.earth2me.essentials.commands.WarpNotFoundException;
-import com.sk89q.worldedit.Vector;
 
 import net.ess3.api.InvalidWorldException;
 
 public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
-	private JavaPlugin jp;
+	private static JavaPlugin jp;
 	private int perheadRadius, dmgPerUse, maxDura;
 	private HashMap<String, String> trackingChestHead = new HashMap<String, String>();
 	private DataLog dl;
 
 	public HeadTracking(JavaPlugin jp) {
-		this.jp = jp;
+		HeadTracking.jp = jp;
 	}
 
 	@Override
@@ -96,12 +95,12 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 	public void trackPlayer(PlayerInteractEvent event) {
 		if (event.getPlayer().isSneaking())
 			return;
-		if (event.getPlayer().getItemInHand() == null
-				|| event.getPlayer().getItemInHand().getType() != Material.COMPASS)
+		if (event.getPlayer().getInventory().getItemInMainHand() == null
+				|| event.getPlayer().getInventory().getItemInMainHand().getType() != Material.COMPASS)
 			return;
 		if (event.getAction() == Action.RIGHT_CLICK_AIR
 				|| event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			ItemStack is = event.getPlayer().getItemInHand();
+			ItemStack is = event.getPlayer().getInventory().getItemInMainHand();
 			if (is.hasItemMeta() && is.getItemMeta().hasDisplayName()) {
 				String name = is.getItemMeta().getDisplayName();
 				if (name.startsWith(ChatColor.DARK_GREEN + "")
@@ -157,18 +156,18 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 									+ Utils.locationToString(nextLoc));
 					event.getPlayer().setCompassTarget(nextLoc);
 					msg(event.getPlayer(), "Tracking " + player.getName(), true);
-					if (getDura(event.getPlayer().getItemInHand()) <= dmgPerUse) {
-						event.getPlayer().setItemInHand(
+					if (getDura(event.getPlayer().getInventory().getItemInMainHand()) <= dmgPerUse) {
+						event.getPlayer().getInventory().setItemInMainHand(
 								new ItemStack(Material.COMPASS, 1));
 					} else {
-						ItemStack hand = event.getPlayer().getItemInHand();
+						ItemStack hand = event.getPlayer().getInventory().getItemInMainHand();
 						hand = Utils.setName(
 								ChatColor.RED
 										+ ChatColor
 												.stripColor(hand.getItemMeta()
 														.getDisplayName()),
 								setDura(hand, getDura(hand) - dmgPerUse));
-						event.getPlayer().setItemInHand(hand);
+						event.getPlayer().getInventory().setItemInMainHand(hand);
 					}
 				}
 			}
@@ -203,12 +202,12 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 	public void initiateTracking(PlayerInteractEvent event) {
 		if (!event.getPlayer().isSneaking())
 			return;
-		if (event.getPlayer().getItemInHand() == null
-				|| event.getPlayer().getItemInHand().getType() != Material.COMPASS)
+		if (event.getPlayer().getInventory().getItemInMainHand() == null
+				|| event.getPlayer().getInventory().getItemInMainHand().getType() != Material.COMPASS)
 			return;
 		if (event.hasBlock())
 			return;
-		ItemStack is = event.getPlayer().getItemInHand();
+		ItemStack is = event.getPlayer().getInventory().getItemInMainHand();
 		if (is.hasItemMeta() && is.getItemMeta().hasDisplayName()) {
 			String name = is.getItemMeta().getDisplayName();
 			if (name.startsWith(ChatColor.DARK_RED + "") && name.endsWith(")")) {
@@ -221,7 +220,7 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 				}
 				is = Utils.setName(ChatColor.RED + ChatColor.stripColor(name),
 						Utils.setLore(is, maxDura + " / " + maxDura));
-				event.getPlayer().setItemInHand(is);
+				event.getPlayer().getInventory().setItemInMainHand(is);
 				String last = name.substring(name.lastIndexOf('(') + 1);
 				last = last.substring(0, last.length() - 1);
 				int headCount = Integer.parseInt(last);
@@ -304,7 +303,7 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 			return;
 		}
 		Utils.removeFromInventory(p, new ItemStack(iff.getMaterial(), 1));
-		ItemStack hand = event.getWhoClicked().getItemInHand();
+		ItemStack hand = event.getWhoClicked().getInventory().getItemInMainHand();
 		hand = Utils.setName(
 				ChatColor.DARK_GREEN
 						+ ChatColor.stripColor(hand.getItemMeta()
@@ -315,25 +314,25 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 								.get(hand.getItemMeta().getLore().size() - 1)));
 		msg(p, "The next track you find will be " + iff.getFuel() + " closer.",
 				true);
-		event.getWhoClicked().setItemInHand(hand);
+		event.getWhoClicked().getInventory().setItemInMainHand(hand);
 		event.getWhoClicked().closeInventory();
 	}
 
-	@SuppressWarnings("deprecation")
+
 	@EventHandler
 	public void playerInteractTrackingChest(PlayerInteractEvent event) {
 		if (event.hasBlock()
 				&& event.getClickedBlock().getType() == Material.CHEST
-				&& event.getClickedBlock().getData() == (byte) Config.Chests.TRACKING) {
+				&& event.getClickedBlock().getMetadata("hunting").toString() == "11") {
 			event.setCancelled(true);
-			if (event.getPlayer().getItemInHand() == null
-					|| event.getPlayer().getItemInHand().getType() != Material.COMPASS) {
+			if (event.getPlayer().getInventory().getItemInMainHand() == null
+					|| event.getPlayer().getInventory().getItemInMainHand().getType() != Material.COMPASS) {
 				msg(event.getPlayer(),
 						"Please click the chest with a compass in your hand",
 						false);
 				return;
 			}
-			ItemStack hand = event.getPlayer().getItemInHand();
+			ItemStack hand = event.getPlayer().getInventory().getItemInMainHand();
 			if (hand.getAmount() > 1) {
 				msg(event.getPlayer(),
 						"You may only have one compass in your hand.", false);
@@ -438,11 +437,11 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 		}
 		int skullsInInventory = Utils.count(event.getView().getTopInventory(),
 				Material.SKULL_ITEM);
-		ItemMeta im = p.getItemInHand().getItemMeta();
+		ItemMeta im = p.getInventory().getItemInMainHand().getItemMeta();
 		im.setDisplayName(ChatColor.DARK_RED
 				+ trackingChestHead.get(p.getName()) + "'s tracker ("
 				+ skullsInInventory + ")");
-		p.getItemInHand().setItemMeta(im);
+		p.getInventory().getItemInMainHand().setItemMeta(im);
 		trackingChestHead.remove(p.getName());
 		if (skullsInInventory > 0) {
 			msg(p, "Shift right-click your compass to lock in your heads.",
@@ -462,10 +461,9 @@ public class HeadTracking implements SubPlugin, Listener, CommandExecutor {
 	    return b;
 	}
 
-	@SuppressWarnings("deprecation")
 	private static void setTrackingChest(Player p) {
 		if (getTarBlock(p, 20).getType().equals(Material.CHEST)) {
-			getTarBlock(p, 20).setData((byte) Config.Chests.TRACKING);
+			getTarBlock(p, 20).setMetadata("hunting", new FixedMetadataValue(jp, "yes"));
 			p.sendMessage(ChatColor.RED + "Made a tracking chest.");
 		} else {
 			p.sendMessage(ChatColor.RED + "Target block is not chest.");

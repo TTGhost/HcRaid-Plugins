@@ -35,8 +35,8 @@ import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.bukkit.BukkitUtil;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.bukkit.selections.Selection;
-import com.sk89q.worldguard.protection.flags.InvalidFlagFormat;
 import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -571,12 +571,7 @@ public class RedvBlue implements Minigame, Listener {
 							minbv, maxbv);
 					manager.addRegion(rpr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						rpr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					rpr.setFlag(build, State.DENY);
 					sender.sendMessage(title + "Red wall and flags set.");
 				}
 			}
@@ -608,12 +603,7 @@ public class RedvBlue implements Minigame, Listener {
 							mibv, mabv);
 					manager.addRegion(wpr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						wpr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					wpr.setFlag(build, State.DENY);
 				}
 				sender.sendMessage(title + "Mid section set.");
 			}
@@ -645,12 +635,7 @@ public class RedvBlue implements Minigame, Listener {
 							mibv, mabv);
 					manager.addRegion(wpr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						wpr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					wpr.setFlag(build, State.DENY);
 				}
 				sender.sendMessage(title + "Wall one set.");
 			}
@@ -682,12 +667,7 @@ public class RedvBlue implements Minigame, Listener {
 							mibv, mabv);
 					manager.addRegion(w2pr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						w2pr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					w2pr.setFlag(build, State.DENY);
 				}
 				sender.sendMessage(title + "Wall two set.");
 			}
@@ -719,12 +699,7 @@ public class RedvBlue implements Minigame, Listener {
 							mibv, mabv);
 					manager.addRegion(w3pr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						w3pr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					w3pr.setFlag(build, State.DENY);
 				}
 				sender.sendMessage(title + "Wall three set.");
 			}
@@ -756,12 +731,7 @@ public class RedvBlue implements Minigame, Listener {
 							mibv, mabv);
 					manager.addRegion(w4pr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						w4pr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					w4pr.setFlag(build, State.DENY);
 				}
 				sender.sendMessage(title + "Wall four set.");
 			}
@@ -793,12 +763,7 @@ public class RedvBlue implements Minigame, Listener {
 							mibv, mabv);
 					manager.addRegion(rpr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						rpr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					rpr.setFlag(build, State.DENY);
 				}
 				sender.sendMessage(title + "Roof set.");
 			}
@@ -833,12 +798,7 @@ public class RedvBlue implements Minigame, Listener {
 							minbv, maxbv);
 					manager.addRegion(bpr);
 					StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-					try {
-						bpr.setFlag(build, build.parseInput(
-								HcEssentials.worldGuard, sender, "deny"));
-					} catch (InvalidFlagFormat e) {
-						e.printStackTrace();
-					}
+					bpr.setFlag(build, State.DENY);
 
 					sender.sendMessage(title + "Blue wall and flags set.");
 				}

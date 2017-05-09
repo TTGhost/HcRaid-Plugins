@@ -19,7 +19,7 @@ public class SafeDropBlock {
 	public boolean canUse(Player p, Block b) {
 		if (b.getType() == mat)
 			if (Enchantable
-					.getItemType(p.getPlayer().getItemInHand().getType()) == itemType)
+					.getItemType(p.getPlayer().getInventory().getItemInMainHand().getType()) == itemType)
 				return true;
 			else
 				return false;

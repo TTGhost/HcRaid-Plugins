@@ -46,6 +46,7 @@ public class MultiHealthBlocks implements Listener {
 					+ mhb.getMaxHealth());
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void explode(final EntityExplodeEvent event) {
 		List<Block> searchBlocks = new ArrayList<Block>();
@@ -129,6 +130,7 @@ public class MultiHealthBlocks implements Listener {
 		return false;
 	}
 
+	@SuppressWarnings("unused")
 	@EventHandler
 	public void blockInteract(PlayerInteractEvent event) {
 		if (event.hasBlock() && event.hasItem()

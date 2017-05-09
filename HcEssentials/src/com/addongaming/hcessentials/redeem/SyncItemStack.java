@@ -30,6 +30,7 @@ public class SyncItemStack implements Serializable {
 	 * 
 	 * @param bukkitItemStack
 	 */
+	@SuppressWarnings("deprecation")
 	public SyncItemStack(final ItemStack bukkitItemStack) {
 		id = bukkitItemStack.getTypeId();
 		amount = bukkitItemStack.getAmount();
@@ -88,6 +89,7 @@ public class SyncItemStack implements Serializable {
 	 * @param syncItemStack
 	 * @return ItemStack
 	 */
+	@SuppressWarnings("deprecation")
 	public ItemStack getBukkitItemStack() {
 		final ItemStack is = new ItemStack(getId(), getAmount());
 		is.getData().setData(getData());

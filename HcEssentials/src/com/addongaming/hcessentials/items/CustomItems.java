@@ -21,15 +21,12 @@ import com.addongaming.hcessentials.SubPlugin;
 import com.addongaming.hcessentials.config.Config;
 import com.addongaming.hcessentials.items.objects.ChestSaver;
 import com.addongaming.hcessentials.items.objects.MiningLaser;
-import com.addongaming.hcessentials.logging.DataLog;
 
 public class CustomItems implements SubPlugin, Listener {
 	private final List<InfCustomItem> itemList = new ArrayList<InfCustomItem>();
 	private final JavaPlugin jp;
-	private final DataLog dl;
-
 	public CustomItems(JavaPlugin jp) {
-		dl = HcEssentials.getDataLogger().addLogger("CustomItems");
+		HcEssentials.getDataLogger().addLogger("CustomItems");
 		this.jp = jp;
 	}
 
@@ -61,6 +58,7 @@ public class CustomItems implements SubPlugin, Listener {
 		itemList.add(item);
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void playerInteract(PlayerInteractEvent pie) {
 		if (pie.getAction() == Action.LEFT_CLICK_BLOCK
@@ -76,7 +74,7 @@ public class CustomItems implements SubPlugin, Listener {
 					return;
 				}
 		} else if (pie.getPlayer() != null
-				&& pie.getPlayer().getItemInHand() != null
+				&& pie.getPlayer().getInventory().getItemInMainHand() != null
 				&& pie.getAction() == Action.RIGHT_CLICK_BLOCK
 				&& (pie.getClickedBlock().getType() == Material.WALL_SIGN || pie
 						.getClickedBlock().getType() == Material.SIGN_POST)) {

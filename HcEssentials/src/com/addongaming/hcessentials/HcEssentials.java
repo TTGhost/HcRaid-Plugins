@@ -99,6 +99,11 @@ public class HcEssentials extends JavaPlugin implements CommandExecutor {
 		fc.addDefault("antilag.rainstopper.enabled", Boolean.TRUE);
 		fc.addDefault("antilag.alwaysday.enabled", Boolean.FALSE);
 		fc.addDefault("antilag.alwaysday.worlds", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				this.add("world_name_here");
 			}
@@ -128,6 +133,11 @@ public class HcEssentials extends JavaPlugin implements CommandExecutor {
 		fc.addDefault("joinmessage.description", "A hard core raiding server.");
 		// TODO Start of join message for first joining
 		fc.addDefault("joinmessage.firstjoin", new ArrayList<String>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			{
 				add(ChatColor.GREEN + "Welcome! I see you're new here.");
 				add(ChatColor.GREEN + "...");

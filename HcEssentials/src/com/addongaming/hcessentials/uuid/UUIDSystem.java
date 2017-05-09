@@ -101,9 +101,9 @@ public class UUIDSystem implements SubPlugin, Listener {
 
 	public UUID getUUID(String playerName) {
 		System.out.println("getUUID0");
-		if (Bukkit.getOfflinePlayer(playerName) != null
-				&& Bukkit.getOfflinePlayer(playerName).hasPlayedBefore()) {
-			return Bukkit.getOfflinePlayer(playerName).getUniqueId();
+		if (Bukkit.getPlayer(playerName) != null
+				&& Bukkit.getPlayer(playerName).hasPlayedBefore()) {
+			return Bukkit.getPlayer(playerName).getUniqueId();
 		}
 		System.out.println("getUUID1");
 		for (String str : playerUserMap.keySet())

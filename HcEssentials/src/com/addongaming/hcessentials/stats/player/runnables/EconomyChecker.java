@@ -14,6 +14,7 @@ public class EconomyChecker implements Runnable {
 		this.psh = psh;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
 		for (String str : psh.getPlayerMap().keySet()) {

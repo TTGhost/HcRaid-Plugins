@@ -15,6 +15,7 @@ public class SyncInventory implements Serializable {
 	 * 
 	 * @param inventory
 	 */
+	@SuppressWarnings("deprecation")
 	public SyncInventory(final ItemStack[] inventory) {
 		this.inventory = new SyncItemStack[inventory.length];
 		for (int pos = 0; pos < inventory.length; pos++) {

@@ -193,10 +193,6 @@ public class OneVOne implements Minigame, Listener {
 		checkGames();
 	}
 
-	private void stopGame(String playerName) {
-
-	}
-
 	private void startGame(CommandSender sender, Player p, String[] args) {
 		if (!(sender instanceof Player))
 			return;
@@ -607,8 +603,7 @@ public class OneVOne implements Minigame, Listener {
 
 												@Override
 												public void run() {
-													pie.getPlayer()
-															.setItemInHand(null);
+													pie.getPlayer().getInventory().setItemInMainHand(null);
 												}
 											}, 0l);
 
@@ -667,6 +662,7 @@ public class OneVOne implements Minigame, Listener {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void playerMove(PlayerMoveEvent pme) {
 		if (pme.getPlayer().isOp() || pme.isCancelled())

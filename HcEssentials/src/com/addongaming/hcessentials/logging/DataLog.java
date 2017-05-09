@@ -76,8 +76,6 @@ public class DataLog {
 		try {
 			if (!toWriter.exists())
 				toWriter.createNewFile();
-			PrintWriter pw = new PrintWriter(new FileOutputStream(toWriter,
-					true));
 			return new PrintStream(new BufferedOutputStream(
 					new FileOutputStream(toWriter, true)));
 

@@ -108,6 +108,7 @@ public class MiningLaser implements InfCustomItem {
 		player.sendMessage(message + msg);
 	}
 
+	@SuppressWarnings("deprecation")
 	private void mine(PlayerInteractEvent event) {
 		Block[] block;
 		if (playerMode.contains(event.getPlayer().getName())) {
@@ -143,14 +144,14 @@ public class MiningLaser implements InfCustomItem {
 			bl.setType(Material.AIR);
 		}
 		Player player = event.getPlayer();
-		if (player.getItemInHand().getDurability()
-				+ (duraDamage * finalList.size()) > player.getItemInHand()
+		if (player.getInventory().getItemInMainHand().getDurability()
+				+ (duraDamage * finalList.size()) > player.getInventory().getItemInMainHand()
 				.getType().getMaxDurability()) {
-			player.setItemInHand(new ItemStack(Material.AIR));
+			player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
 		} else
-			player.getItemInHand()
+			player.getInventory().getItemInMainHand()
 					.setDurability(
-							(short) (player.getItemInHand().getDurability() + (duraDamage * finalList
+							(short) (player.getInventory().getItemInMainHand().getDurability() + (duraDamage * finalList
 									.size())));
 	}
 

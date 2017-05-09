@@ -34,12 +34,10 @@ public enum EntityList {
 			EntityType.VILLAGER, EntityStatus.FRIENDLY), itemFrame(
 			"Item Frame", EntityType.ITEM_FRAME, EntityStatus.FRIENDLY);
 
-	private final String name;
 	private final EntityType entityType;
 	private final EntityStatus status;
 
 	EntityList(String name, EntityType entityType, EntityStatus status) {
-		this.name = name;
 		this.entityType = entityType;
 		this.status = status;
 	}

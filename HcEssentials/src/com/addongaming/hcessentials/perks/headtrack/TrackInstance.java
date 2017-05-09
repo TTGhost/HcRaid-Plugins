@@ -13,17 +13,14 @@ import com.addongaming.hcessentials.utils.Utils;
 
 public class TrackInstance {
 	private Random random;
-	private Location trackeeLocation;
 	private Rectangle rect;
 	private Player trackee;
 	private Player tracker;
 	public static int randomRadius = 50;
-	private boolean spinny = false;
-
 	public TrackInstance(Player trackee, Player tracker) {
 		this.random = new Random((trackee.getName() + new SimpleDateFormat(
 				"yyyy.MM.dd").format(new Date())).hashCode());
-		this.trackeeLocation = trackee.getLocation();
+		trackee.getLocation();
 		this.rect = new Rectangle(
 				(int) (trackee.getLocation().getX() + (random
 						.nextInt(randomRadius * 2) - randomRadius)),

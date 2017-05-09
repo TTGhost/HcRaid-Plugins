@@ -169,6 +169,8 @@ public class PostgreSQL extends Database {
 					false);
 			throw new SQLException(
 					"Please use the prepare() method to prepare a query.");
+		default:
+			break;
 		}
 	}
 

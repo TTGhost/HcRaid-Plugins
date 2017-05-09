@@ -6,7 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import me.spoony.chatlib.MessageSender;
+import com.hiddencreeperz.chatlib.MessageSender; // I know.. It's temporary until i upgrade to Fanciful
+
 
 public class AnnouncingJTask implements Runnable {
 	private List<String> statements;

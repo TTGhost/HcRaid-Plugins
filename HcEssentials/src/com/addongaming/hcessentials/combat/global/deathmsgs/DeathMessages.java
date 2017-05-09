@@ -83,7 +83,7 @@ public class DeathMessages implements Listener, CommandExecutor {
 		case ON:
 			return;
 		case NONAMES:
-			ItemStack killing = killer.getItemInHand();
+			ItemStack killing = killer.getInventory().getItemInMainHand();
 			if (killing == null || killing.getType() == Material.AIR)
 				return;
 			if (killing.getType() == Material.BOW) {

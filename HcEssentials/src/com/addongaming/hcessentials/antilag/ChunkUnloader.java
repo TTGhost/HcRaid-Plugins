@@ -40,7 +40,7 @@ public class ChunkUnloader implements Runnable {
 			}
 			try {
 				for (; start != fin; start++)
-					if (chunkie[start].unload(true, true))
+					if (chunkie[start].unload())
 						counter++;
 			} catch (Exception e) {
 				e.printStackTrace();

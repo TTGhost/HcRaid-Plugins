@@ -42,7 +42,7 @@ public class SilkSpawners implements Listener, SubPlugin {
 	public void silkTouch(BlockBreakEvent bde) {
 		if (!(bde.getBlock().getType() == Material.MOB_SPAWNER))
 			return;
-		if (bde.getPlayer().getItemInHand().getEnchantments()
+		if (bde.getPlayer().getInventory().getItemInMainHand().getEnchantments()
 				.containsKey(Enchantment.SILK_TOUCH)) {
 			if (bde.getPlayer().hasPermission(
 					jp.getConfig().getString("spawntouch.perm"))) {
@@ -102,7 +102,9 @@ public class SilkSpawners implements Listener, SubPlugin {
 			}
 			CreatureSpawner cs = (CreatureSpawner) event.getBlockPlaced()
 					.getState();
-			cs.setCreatureTypeByName(sb.toString().toUpperCase());
+			String et = sb.toString().toUpperCase();
+			cs.setSpawnedType(EntityType.valueOf(et));
+					//sb.toString().toUpperCase());
 		}
 	}
 }

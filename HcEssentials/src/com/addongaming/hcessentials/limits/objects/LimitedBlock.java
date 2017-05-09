@@ -11,6 +11,7 @@ public class LimitedBlock {
 	private int dura = -1;
 	private int id;
 
+	@SuppressWarnings("deprecation")
 	public LimitedBlock(String line) {
 		if (line.contains(":")) {
 			String[] colonSplit = line.split("[:]");
@@ -63,6 +64,7 @@ public class LimitedBlock {
 		return material;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean matches(ItemStack is) {
 		if (material != null) {
 			if (dura == -1) {
@@ -79,6 +81,7 @@ public class LimitedBlock {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean matches(Block block) {
 		if (material != null) {
 			if (dura == -1) {

@@ -29,7 +29,6 @@ import com.addongaming.hcessentials.SubPlugin;
 import com.addongaming.hcessentials.events.BountyClaimedEvent;
 import com.addongaming.hcessentials.events.BountyIssueEvent;
 import com.addongaming.hcessentials.events.ItemRecycledEvent;
-import com.addongaming.hcessentials.logging.DataLog;
 import com.addongaming.hcessentials.stats.player.runnables.CheckPlayerExistence;
 import com.addongaming.hcessentials.stats.player.runnables.ComparePlayers;
 import com.addongaming.hcessentials.stats.player.runnables.EconomyChecker;
@@ -76,14 +75,13 @@ public class PlayerStatsHandler implements SubPlugin, Listener, CommandExecutor 
 		System.out.println("Finished player updater.");
 	}
 
-	private DataLog dl;
 	private DatabaseHandling dh;
 
 	@Override
 	public boolean onEnable() {
 		if (!jp.getConfig().getBoolean("playerstats.enabled"))
 			return false;
-		dl = HcEssentials.getDataLogger().addLogger("Playerstats");
+		HcEssentials.getDataLogger().addLogger("Playerstats");
 		String url = jp.getConfig().getString("playerstats.db.url");
 		String port = jp.getConfig().getString("playerstats.db.port");
 		String database = jp.getConfig().getString("playerstats.db.database");

@@ -34,7 +34,6 @@ import com.addongaming.hcessentials.HcEssentials;
 import com.addongaming.hcessentials.data.LocationZone;
 import com.addongaming.hcessentials.events.TeamProtectEvent;
 import com.addongaming.hcessentials.minigames.Minigame;
-import com.addongaming.hcessentials.minigames.dtcmethods.DTCMethods;
 import com.addongaming.hcessentials.redeem.SyncInventory;
 import com.addongaming.hcessentials.teams.Team;
 import com.sk89q.worldedit.BlockVector;
@@ -42,9 +41,9 @@ import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.bukkit.BukkitUtil;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.bukkit.selections.Selection;
-import com.sk89q.worldguard.protection.flags.InvalidFlagFormat;
-import com.sk89q.worldguard.protection.flags.SetFlag;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -60,7 +59,6 @@ public class DTC implements Minigame, Listener {
 	private boolean setwarp = false;
 	private boolean started = false;
 	public List<String> chatToggled = new ArrayList<String>();
-	private DTCMethods ins;
 	List<Location> chestLocations = new ArrayList<Location>();
 	LocationZone re;
 	private int timer;
@@ -169,15 +167,6 @@ public class DTC implements Minigame, Listener {
 			return true;
 		}
 		return false;
-	}
-
-	private boolean isInteger(String string) {
-		try {
-			Integer.parseInt(string);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -569,43 +558,33 @@ public class DTC implements Minigame, Listener {
 			break;
 		case "setflags":
 			if (sender.isOp() || sender.hasPermission("hcraid.minigames")) {
-				Player plp = (Player) sender;
-				World w = plp.getWorld();
-				RegionManager manager = HcEssentials.worldGuard
+				Player p = (Player) sender;
+				World w = p.getWorld();
+				RegionManager m = HcEssentials.worldGuard
 						.getRegionManager(w);
-				Location minvec = re.getMin();
-				Location maxvec = re.getMax();
-				Vector mivec = BukkitUtil.toVector(minvec);
-				Vector mavec = BukkitUtil.toVector(maxvec);
-				BlockVector minbv = new BlockVector(mivec);
-				BlockVector maxbv = new BlockVector(mavec);
-				ProtectedRegion dpr = new ProtectedCuboidRegion("dtc", minbv,
-						maxbv);
-				manager.addRegion(dpr);
-				StateFlag build = com.sk89q.worldguard.protection.flags.DefaultFlag.BUILD;
-				SetFlag<String> cmd = com.sk89q.worldguard.protection.flags.DefaultFlag.ALLOWED_CMDS;
-				StateFlag spawn = com.sk89q.worldguard.protection.flags.DefaultFlag.MOB_SPAWNING;
-				try {
-					dpr.setFlag(build, build.parseInput(
-							HcEssentials.worldGuard, sender, "deny"));
+				Location min = re.getMin();
+				Location max = re.getMax();
+				Vector minv = BukkitUtil.toVector(min);
+				Vector maxv = BukkitUtil.toVector(max);
+				BlockVector bmin = new BlockVector(minv);
+				BlockVector bmax = new BlockVector(maxv);
+				ProtectedRegion pr = new ProtectedCuboidRegion("dtc", bmin,
+						bmax);
+				m.addRegion(pr);
+				StateFlag build = DefaultFlag.BUILD;
+				StateFlag spawn = DefaultFlag.MOB_SPAWNING;
+				pr.setFlag(build, State.DENY);
+//				try {
+					//TODO: While we fix this, we must manually set these.
+//					dpr.setFlag(
+//							cmd,
+//							cmd.parseInput(HcEssentials.worldGuard, sender,
+//									"/home, /spawn, /team, /team c, /team chat, /team invite, /return"));
+//				} catch (InvalidFlagFormat e) {
+//					e.printStackTrace();
+//				}
+					pr.setFlag(spawn, State.DENY);
 
-				} catch (InvalidFlagFormat e) {
-					e.printStackTrace();
-				}
-				try {
-					dpr.setFlag(
-							cmd,
-							cmd.parseInput(HcEssentials.worldGuard, sender,
-									"/home, /spawn, /team, /team c, /team chat, /team invite, /return"));
-				} catch (InvalidFlagFormat e) {
-					e.printStackTrace();
-				}
-				try {
-					dpr.setFlag(spawn, spawn.parseInput(
-							HcEssentials.worldGuard, sender, "deny"));
-				} catch (InvalidFlagFormat e) {
-					e.printStackTrace();
-				}
 				sender.sendMessage(title + "Flags set.");
 			}
 			break;
@@ -678,20 +657,18 @@ public class DTC implements Minigame, Listener {
 					|| sender.hasPermission("hcraid.minigames")) {
 				Player p = (Player) sender;
 				if (args.length < 1) {
-					p.sendMessage(title + "/dtc defclear <id>");
+					p.sendMessage(title + "/dtc defclear <name>");
 					break;
 				}
-				if (!isInteger(args[1])) {
-					p.sendMessage(title + "Please use a valid ID.");
+				if (args[1] == null) {
+					p.sendMessage(title + "Please use a valid name.");
 					break;
 				}
-				int id = Integer.parseInt(args[1]);
-				@SuppressWarnings("deprecation")
+				String id = args[1];
 				Material mat = Material.getMaterial(id);
 				if (mat == null)
-					p.sendMessage(title + "Please use a valid ID.");
+					p.sendMessage(title + "Please use a valid name.");
 				for (String defender : team.getMembers()) {
-					@SuppressWarnings("deprecation")
 					Player play = Bukkit.getPlayer(defender);
 					if (play != null && play.isOnline()) {
 						play.getInventory().remove(mat);
@@ -814,7 +791,7 @@ public class DTC implements Minigame, Listener {
 		return re;
 	}
 
-	public List getLocations() {
+	public List<Location> getLocations() {
 		return chestLocations;
 	}
 }

@@ -3,6 +3,7 @@ package com.addongaming.hcessentials.antilag;
 import java.util.List;
 
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -49,7 +50,7 @@ public class EntityDespawner implements Runnable {
 						continue;
 					if (le instanceof Ageable && !((Ageable) (le)).isAdult())
 						continue;
-					if (le.getHealth() == le.getMaxHealth()
+					if (le.getHealth() == le.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue()
 							&& le.getTicksLived() > 20 * 60 * 5) {
 						le.remove();
 						entit++;
