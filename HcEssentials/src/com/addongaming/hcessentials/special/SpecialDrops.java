@@ -55,8 +55,8 @@ public class SpecialDrops implements SubPlugin, Listener {
 
 		} else if (e.getBlock().getType() == Material.LEAVES
 				|| e.getBlock().getType() == Material.LEAVES_2) {
-			if ((e.getPlayer().getItemInHand() != null)
-					&& (e.getPlayer().getItemInHand().getType() == Material.SHEARS)) {
+			if ((e.getPlayer().getInventory().getItemInMainHand() != null)
+					&& (e.getPlayer().getInventory().getItemInMainHand().getType() == Material.SHEARS)) {
 				return;
 			}
 			ItemStack is;
