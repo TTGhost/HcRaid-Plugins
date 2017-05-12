@@ -9,7 +9,8 @@ If you can fix something that I've tried fixing, submit a *pull request*.
 If you *can't* fix it, just submit an *issue* and eventually we can get around to it.
 
 Add what you want! Don't be cheaty tho! :O
-
-What's Working:
-HcEssentials: Teams, Coloured Names, 
-HcEssentials TODO: 
+# What Works:
+## HcEssentials ##
+- Teams
+- Coloured Names
+- (this is a todo)
