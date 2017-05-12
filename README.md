@@ -11,6 +11,5 @@ If you *can't* fix it, just submit an *issue* and eventually we can get around t
 Add what you want! Don't be cheaty tho! :O
 # What Works:
 ## HcEssentials ##
-- Teams
-- Coloured Names
+- Everything but minigames??
 - (this is a todo)
